@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobter — Nigerian Task & Campus Marketplace</title>
+    <title>Jobter — Nigerian Micro-Task & Job Marketplace</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -33,7 +33,7 @@
     <style>
         [x-cloak] { display: none !important; }
 
-        /* Clean Custom Range Slider */
+        /* Custom Range Slider Styling */
         input[type=range].jobter-range {
             -webkit-appearance: none;
             width: 100%;
@@ -75,7 +75,7 @@
 <body class="bg-jobterBg text-jobterBlack font-sans min-h-screen flex flex-col antialiased selection:bg-jobterBlue selection:text-white"
       x-data="jobterApp()" x-init="init()">
 
-    <!-- Clean Floating Toast Notification -->
+    <!-- Toast Notification Container -->
     <div class="fixed bottom-6 right-6 z-50 space-y-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0">
         <template x-for="t in toasts" :key="t.id">
             <div x-transition:enter="transition ease-out duration-200"
@@ -98,7 +98,7 @@
 
     <!-- Top Navigation Bar -->
     <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
             
             <!-- Official Jobter Logo (Handshake 'j' SVG) -->
             <button @click="activeTab = 'explore'" class="flex items-center space-x-3 text-left focus:outline-none group">
@@ -120,93 +120,100 @@
                 </div>
                 <div>
                     <span class="font-extrabold text-xl tracking-tight text-jobterBlack block leading-none">Jobter</span>
-                    <span class="text-[11px] font-medium text-slate-500 mt-1 block">Nigeria's Task Marketplace</span>
+                    <span class="text-[11px] font-medium text-slate-500 mt-1 block">Nigeria's Micro-Task Marketplace</span>
                 </div>
             </button>
 
-            <!-- 4 Clean Multi-Page Views Navigation -->
-            <nav class="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80">
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden lg:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80">
                 <button @click="activeTab = 'explore'"
                         :class="activeTab === 'explore' ? 'bg-white text-jobterBlack shadow-sm font-bold' : 'text-slate-600 hover:text-jobterBlack font-medium'"
-                        class="px-4 py-2 rounded-lg text-xs transition">
+                        class="px-3.5 py-2 rounded-lg text-xs transition">
                     Explore Gigs (<span x-text="tasks.filter(t => t.status === 'open').length"></span>)
                 </button>
                 <button @click="activeTab = 'post'"
                         :class="activeTab === 'post' ? 'bg-white text-jobterBlack shadow-sm font-bold' : 'text-slate-600 hover:text-jobterBlack font-medium'"
-                        class="px-4 py-2 rounded-lg text-xs transition">
+                        class="px-3.5 py-2 rounded-lg text-xs transition">
                     Post a Task
                 </button>
                 <button @click="activeTab = 'wallet'"
                         :class="activeTab === 'wallet' ? 'bg-white text-jobterBlack shadow-sm font-bold' : 'text-slate-600 hover:text-jobterBlack font-medium'"
-                        class="px-4 py-2 rounded-lg text-xs transition">
+                        class="px-3.5 py-2 rounded-lg text-xs transition">
                     Wallet & SafeLock™
+                </button>
+                <button @click="activeTab = 'banks'"
+                        :class="activeTab === 'banks' ? 'bg-white text-jobterBlack shadow-sm font-bold' : 'text-slate-600 hover:text-jobterBlack font-medium'"
+                        class="px-3.5 py-2 rounded-lg text-xs transition">
+                    Bank Accounts
                 </button>
                 <button @click="activeTab = 'chats'"
                         :class="activeTab === 'chats' ? 'bg-white text-jobterBlack shadow-sm font-bold' : 'text-slate-600 hover:text-jobterBlack font-medium'"
-                        class="px-4 py-2 rounded-lg text-xs transition flex items-center space-x-1.5">
+                        class="px-3.5 py-2 rounded-lg text-xs transition flex items-center space-x-1">
                     <span>Active Chats</span>
                     <span class="bg-jobterBlue text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full"
                           x-text="tasks.filter(t => t.status === 'claimed').length"></span>
                 </button>
+                <button @click="activeTab = 'faq'"
+                        :class="activeTab === 'faq' ? 'bg-white text-jobterBlack shadow-sm font-bold' : 'text-slate-600 hover:text-jobterBlack font-medium'"
+                        class="px-3.5 py-2 rounded-lg text-xs transition">
+                    FAQ
+                </button>
             </nav>
 
-            <!-- Currency Selector & Wallet Pill -->
+            <!-- Right Actions: Currency, Wallet Pill & Verification Badge -->
             <div class="flex items-center space-x-2.5">
                 <select x-model="currency"
                         aria-label="Currency Selector"
-                        class="bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-jobterBlack focus:outline-none focus:border-jobterBlue cursor-pointer">
+                        class="hidden sm:block bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-jobterBlack focus:outline-none focus:border-jobterBlue cursor-pointer">
                     <option value="NGN">NGN (₦)</option>
                     <option value="USD">USD ($)</option>
                     <option value="GBP">GBP (£)</option>
                     <option value="EUR">EUR (€)</option>
                 </select>
 
+                <button @click="openVerificationModal()"
+                        class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-2 rounded-xl transition flex items-center space-x-1.5">
+                    <span x-text="isVerified ? '✓ Verified (NIN)' : '🛡️ Verify Account'"></span>
+                </button>
+
                 <button @click="activeTab = 'wallet'"
                         class="bg-jobterBlack hover:bg-slate-800 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center space-x-2">
-                    <span class="text-slate-400 font-medium hidden sm:inline">Wallet:</span>
+                    <span class="text-slate-400 font-medium hidden md:inline">Wallet:</span>
                     <span x-text="formatMoney(walletBalance)"></span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile View Switcher -->
-        <div class="md:hidden grid grid-cols-4 gap-1 px-4 pb-3 bg-white border-t border-slate-100 pt-2">
-            <button @click="activeTab = 'explore'"
-                    :class="activeTab === 'explore' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600 font-medium'"
-                    class="py-2 rounded-lg text-[11px] text-center">Explore</button>
-            <button @click="activeTab = 'post'"
-                    :class="activeTab === 'post' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600 font-medium'"
-                    class="py-2 rounded-lg text-[11px] text-center">Post Task</button>
-            <button @click="activeTab = 'wallet'"
-                    :class="activeTab === 'wallet' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600 font-medium'"
-                    class="py-2 rounded-lg text-[11px] text-center">SafeLock™</button>
-            <button @click="activeTab = 'chats'"
-                    :class="activeTab === 'chats' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600 font-medium'"
-                    class="py-2 rounded-lg text-[11px] text-center">
-                Chats (<span x-text="tasks.filter(t => t.status === 'claimed').length"></span>)
-            </button>
+        <!-- Mobile Secondary Navigation Bar -->
+        <div class="lg:hidden grid grid-cols-6 gap-1 px-3 pb-3 bg-white border-t border-slate-100 pt-2">
+            <button @click="activeTab = 'explore'" :class="activeTab === 'explore' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600'" class="py-2 rounded-lg text-[10px] text-center">Explore</button>
+            <button @click="activeTab = 'post'" :class="activeTab === 'post' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600'" class="py-2 rounded-lg text-[10px] text-center">Post</button>
+            <button @click="activeTab = 'wallet'" :class="activeTab === 'wallet' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600'" class="py-2 rounded-lg text-[10px] text-center">SafeLock</button>
+            <button @click="activeTab = 'banks'" :class="activeTab === 'banks' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600'" class="py-2 rounded-lg text-[10px] text-center">Banks</button>
+            <button @click="activeTab = 'chats'" :class="activeTab === 'chats' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600'" class="py-2 rounded-lg text-[10px] text-center">Chats</button>
+            <button @click="activeTab = 'faq'" :class="activeTab === 'faq' ? 'bg-jobterBlue text-white font-bold' : 'bg-slate-100 text-slate-600'" class="py-2 rounded-lg text-[10px] text-center">FAQ</button>
         </div>
     </header>
 
     <!-- Main Container -->
-    <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-8">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
 
         <!-- =============================================================== -->
-        <!-- VIEW 1: EXPLORE GIGS (Spacious 2-Column Grid, All 36 States)    -->
+        <!-- VIEW 1: EXPLORE GIGS (Live Feed, 36 States + FCT + Remote)      -->
         <!-- =============================================================== -->
         <section x-show="activeTab === 'explore'" x-transition.opacity class="space-y-8">
             
-            <!-- Clean Header Banner -->
+            <!-- Hero Banner -->
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div class="max-w-xl">
+                <div class="max-w-2xl">
                     <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-jobterBlue bg-jobterBlueLight px-3 py-1 rounded-full mb-3">
-                        36 States + FCT & Campus Hubs
+                        Nigeria's Trusted Micro-Task Network
                     </span>
                     <h1 class="text-2xl sm:text-3xl font-extrabold text-jobterBlack tracking-tight">
-                        Set a Price Range. Pick Your Offer.
+                        Post Tasks. Set Any Budget. Earn Safely.
                     </h1>
                     <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                        Task Setters fund tasks directly from their Jobter Wallet. Jobbers slide to pick their fair price within the range and earn into SafeLock™.
+                        Connect directly with verified jobbers and task setters across all 36 states and campus hubs. Protected by Jobter Escrow and SafeLock™.
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-3 shrink-0">
@@ -221,20 +228,17 @@
                 </div>
             </div>
 
-            <!-- Streamlined Filter Bar -->
+            <!-- Filters Bar -->
             <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-                    <!-- Search Input -->
                     <div class="md:col-span-7">
                         <input type="text" x-model="searchQuery"
-                               placeholder="Search task, university, or area (e.g., UNILAG, OAU, Wuse 2, braids, project)..."
+                               placeholder="Search task, university, or area (e.g., UNILAG, Wuse 2, errands, coding)..."
                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-jobterBlack placeholder-slate-400 focus:outline-none focus:bg-white focus:border-jobterBlue">
                     </div>
-
-                    <!-- All 36 States + FCT + Remote Select -->
                     <div class="md:col-span-5">
                         <select x-model="selectedState"
-                                aria-label="Filter by Nigerian State"
+                                aria-label="Filter by State"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-jobterBlack focus:outline-none focus:bg-white focus:border-jobterBlue cursor-pointer">
                             <option value="All">All 36 States + FCT + Remote</option>
                             <template x-for="st in statesList" :key="st">
@@ -256,12 +260,11 @@
                 </div>
             </div>
 
-            <!-- Spacious 2-Column Task Grid -->
+            <!-- 2-Column Task Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <template x-for="task in filteredTasks" :key="task.id">
                     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:border-jobterBlue transition flex flex-col justify-between">
                         <div>
-                            <!-- Top Meta Row: State/Location & Category -->
                             <div class="flex items-center justify-between gap-2 mb-3">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-xs font-bold bg-jobterBlack text-white px-2.5 py-1 rounded-lg" x-text="task.state"></span>
@@ -271,19 +274,15 @@
                                       x-text="task.category"></span>
                             </div>
 
-                            <!-- Task Title -->
                             <h3 class="font-bold text-lg text-jobterBlack leading-snug mb-2" x-text="task.title"></h3>
-
-                            <!-- Brief Description -->
                             <p class="text-xs text-slate-500 leading-relaxed mb-5" x-text="task.description"></p>
                         </div>
 
-                        <!-- Bottom Price Range & Action Row -->
                         <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
                             <div>
                                 <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block">
-                                    <span x-show="task.status === 'open'">Setter's Price Range</span>
-                                    <span x-show="task.status !== 'open'" class="text-jobterBlue">Locked Offer</span>
+                                    <span x-show="task.status === 'open'">Budget Range / Escrow</span>
+                                    <span x-show="task.status !== 'open'" class="text-jobterBlue">Agreed Deal</span>
                                 </span>
                                 <span x-show="task.status === 'open'"
                                       class="font-extrabold text-xl text-jobterBlack"
@@ -293,10 +292,9 @@
                                       x-text="formatMoney(task.agreedPrice || task.maxPrice)"></span>
                             </div>
 
-                            <!-- Action Button based on Task Status -->
                             <div>
                                 <template x-if="task.status === 'open'">
-                                    <button @click="openClaimModal(task)"
+                                    <button @click="handleClaimTaskClick(task)"
                                             class="bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-xs px-5 py-3 rounded-xl transition shadow-sm">
                                         Claim Task
                                     </button>
@@ -321,8 +319,8 @@
             <!-- Empty State -->
             <div x-show="filteredTasks.length === 0" x-cloak
                  class="bg-white rounded-2xl p-12 text-center border border-slate-200 max-w-md mx-auto">
-                <p class="font-bold text-base text-jobterBlack">No tasks match your filter</p>
-                <p class="text-xs text-slate-500 mt-1 mb-4">Try selecting "All 36 States + FCT + Remote" or post a new task in this state.</p>
+                <p class="font-bold text-base text-jobterBlack">No tasks found</p>
+                <p class="text-xs text-slate-500 mt-1 mb-4">Try resetting filters or post a new task in this region.</p>
                 <button @click="selectedState = 'All'; selectedCategory = 'All'; searchQuery = ''"
                         class="bg-jobterBlue text-white font-bold text-xs px-4 py-2.5 rounded-xl">
                     Reset Filters
@@ -331,7 +329,7 @@
         </section>
 
         <!-- =============================================================== -->
-        <!-- VIEW 2: POST A TASK (Setter Price Range + Wallet Deduction)     -->
+        <!-- VIEW 2: POST A TASK (Unconstrained Escrow Budgets)              -->
         <!-- =============================================================== -->
         <section x-show="activeTab === 'post'" x-cloak x-transition.opacity class="max-w-2xl mx-auto">
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
@@ -341,24 +339,22 @@
                         <h2 class="text-2xl font-extrabold text-jobterBlack mt-0.5">Post a New Task</h2>
                     </div>
                     <div class="text-right">
-                        <span class="text-[11px] text-slate-400 font-medium block">Available Wallet</span>
+                        <span class="text-[11px] text-slate-400 font-medium block">Wallet Balance</span>
                         <span class="font-extrabold text-base text-jobterBlack" x-text="formatMoney(walletBalance)"></span>
                     </div>
                 </div>
 
                 <form @submit.prevent="createNewTask()" class="space-y-5">
-                    <!-- Task Title -->
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">Task Title</label>
                         <input type="text" required x-model="postForm.title"
-                               placeholder="e.g., Help bind & submit 3 copies of final year project at Senate Building"
+                               placeholder="e.g., Deliver fragile wedding cake from Ikeja to Lekki Phase 1"
                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-jobterBlack focus:outline-none focus:bg-white focus:border-jobterBlue">
                     </div>
 
-                    <!-- State & Specific Campus/Location -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">State (All 36 + FCT)</label>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">State (All 36 + FCT + Remote)</label>
                             <select x-model="postForm.state"
                                     class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm font-semibold text-jobterBlack focus:outline-none focus:border-jobterBlue">
                                 <template x-for="st in statesList" :key="st">
@@ -367,14 +363,13 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Specific Area / Campus</label>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Specific Location / Campus</label>
                             <input type="text" required x-model="postForm.location"
-                                   placeholder="e.g., UNILAG Akoka, Wuse 2, OAU Ife"
+                                   placeholder="e.g., Ikeja GRA, UNILAG, Wuse 2"
                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm text-jobterBlack focus:outline-none focus:bg-white focus:border-jobterBlue">
                         </div>
                     </div>
 
-                    <!-- Category & Details -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Category</label>
@@ -386,76 +381,44 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Short Note / Instructions</label>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Instructions & Details</label>
                             <input type="text" required x-model="postForm.description"
-                                   placeholder="e.g., Send photo proof or VN once done"
+                                   placeholder="e.g., Call upon arrival, photo proof required"
                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-sm text-jobterBlack focus:outline-none focus:bg-white focus:border-jobterBlue">
                         </div>
                     </div>
 
-                    <!-- Price Range Builder with Presets -->
+                    <!-- Unconstrained Budget Range Inputs -->
                     <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-4">
                         <div class="flex items-center justify-between">
                             <div>
-                                <span class="text-xs font-bold text-jobterBlack block">Set Your Price Range (Min – Max)</span>
-                                <span class="text-[11px] text-slate-500">Jobbers will pick their offer within this range</span>
+                                <span class="text-xs font-bold text-jobterBlack block">Set Unconstrained Budget (Min – Max ₦)</span>
+                                <span class="text-[11px] text-slate-500">No maximum limits. Set any amount for high-value tasks.</span>
                             </div>
                             <span class="bg-jobterBlack text-white text-xs font-extrabold px-3 py-1.5 rounded-lg"
                                   x-text="formatRange(postForm.minPrice, postForm.maxPrice)"></span>
                         </div>
 
-                        <!-- Quick Realistic Nigerian Presets -->
-                        <div class="flex flex-wrap gap-2">
-                            <button type="button" @click="postForm.minPrice = 1000; postForm.maxPrice = 1800"
-                                    class="text-[11px] font-semibold bg-white border border-slate-200 hover:border-jobterBlue px-3 py-1.5 rounded-lg transition">
-                                Campus Queue (₦1k – ₦1.8k)
-                            </button>
-                            <button type="button" @click="postForm.minPrice = 1500; postForm.maxPrice = 2500"
-                                    class="text-[11px] font-semibold bg-white border border-slate-200 hover:border-jobterBlue px-3 py-1.5 rounded-lg transition">
-                                Print / Gas Run (₦1.5k – ₦2.5k)
-                            </button>
-                            <button type="button" @click="postForm.minPrice = 2500; postForm.maxPrice = 4000"
-                                    class="text-[11px] font-semibold bg-white border border-slate-200 hover:border-jobterBlue px-3 py-1.5 rounded-lg transition">
-                                Market / Typing (₦2.5k – ₦4k)
-                            </button>
-                            <button type="button" @click="postForm.minPrice = 6000; postForm.maxPrice = 9500"
-                                    class="text-[11px] font-semibold bg-white border border-slate-200 hover:border-jobterBlue px-3 py-1.5 rounded-lg transition">
-                                Home Braids (₦6k – ₦9.5k)
-                            </button>
-                        </div>
-
-                        <!-- Dual Range Inputs -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-2">
-                                <div class="flex justify-between text-xs font-bold">
-                                    <span class="text-slate-500">Min Budget</span>
-                                    <span x-text="formatMoney(postForm.minPrice)"></span>
-                                </div>
-                                <input type="range" min="500" max="15000" step="100"
-                                       x-model.number="postForm.minPrice"
-                                       @input="if(postForm.minPrice >= postForm.maxPrice) postForm.maxPrice = Number(postForm.minPrice) + 500"
-                                       class="jobter-range">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1">Minimum Budget (₦)</label>
+                                <input type="number" min="500" step="500" required x-model.number="postForm.minPrice"
+                                       class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-jobterBlack focus:outline-none focus:border-jobterBlue">
                             </div>
-
-                            <div class="bg-white p-3.5 rounded-xl border border-jobterBlue/40 space-y-2">
-                                <div class="flex justify-between text-xs font-bold">
-                                    <span class="text-jobterBlue">Max Budget (Escrow)</span>
-                                    <span class="text-jobterBlue" x-text="formatMoney(postForm.maxPrice)"></span>
-                                </div>
-                                <input type="range" min="1000" max="20000" step="100"
-                                       x-model.number="postForm.maxPrice"
-                                       @input="if(postForm.maxPrice <= postForm.minPrice) postForm.minPrice = Math.max(500, Number(postForm.maxPrice) - 500)"
-                                       class="jobter-range">
+                            <div>
+                                <label class="block text-[11px] font-bold text-jobterBlue mb-1">Maximum Budget / Escrow (₦)</label>
+                                <input type="number" min="1000" step="500" required x-model.number="postForm.maxPrice"
+                                       class="w-full bg-white border border-jobterBlue/50 rounded-xl px-3.5 py-2.5 text-sm font-bold text-jobterBlue focus:outline-none focus:border-jobterBlue">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Toggle: Fund directly from Jobter Wallet Balance -->
+                    <!-- Escrow Fund Toggle -->
                     <label class="flex items-center justify-between bg-jobterBlueLight/60 border border-jobterBlue/30 rounded-2xl p-4 cursor-pointer">
                         <div>
-                            <span class="font-bold text-xs text-jobterBlack block">Fund directly from my Jobter Wallet Balance</span>
+                            <span class="font-bold text-xs text-jobterBlack block">Fund task escrow securely from Jobter Wallet</span>
                             <span class="text-[11px] text-slate-600">
-                                Locks <strong x-text="formatMoney(postForm.maxPrice)"></strong> into escrow. Remaining wallet: <strong x-text="formatMoney(Math.max(0, walletBalance - postForm.maxPrice))"></strong>
+                                Locks <strong x-text="formatMoney(postForm.maxPrice)"></strong> in escrow. Remaining wallet: <strong x-text="formatMoney(Math.max(0, walletBalance - postForm.maxPrice))"></strong>
                             </span>
                         </div>
                         <input type="checkbox" x-model="postForm.fundFromWallet" class="w-5 h-5 accent-jobterBlue rounded cursor-pointer">
@@ -463,58 +426,57 @@
 
                     <button type="submit"
                             class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-sm py-4 rounded-xl transition shadow-sm">
-                        Publish Task (<span x-text="formatRange(postForm.minPrice, postForm.maxPrice)"></span>)
+                        Publish Task & Lock Escrow (<span x-text="formatRange(postForm.minPrice, postForm.maxPrice)"></span>)
                     </button>
                 </form>
             </div>
         </section>
 
         <!-- =============================================================== -->
-        <!-- VIEW 3: WALLET & SAFELOCK™ (₦20,000 Minimum Withdrawal Rule)    -->
+        <!-- VIEW 3: WALLET & SAFELOCK™ (₦20,000 Withdrawal Rule)           -->
         <!-- =============================================================== -->
         <section x-show="activeTab === 'wallet'" x-cloak x-transition.opacity class="max-w-4xl mx-auto space-y-6">
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <!-- Card 1: Available Spendable Wallet Balance -->
+                <!-- Card 1: Available Wallet & Escrow Funds -->
                 <div class="bg-jobterBlack text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Available Spendable Balance</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Available Wallet Balance</span>
                         <div class="text-3xl sm:text-4xl font-extrabold text-white mt-2" x-text="formatMoney(walletBalance)"></div>
                         <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                            Keep funds in your Jobter Wallet and use parts of it to post tasks across Nigeria anytime.
+                            Use your spendable wallet balance to post tasks or fund active escrow jobs instantly.
                         </p>
                     </div>
 
                     <div class="pt-6 mt-6 border-t border-slate-800 flex flex-wrap gap-3">
-                        <button @click="topUpWallet(5000)"
+                        <button @click="topUpWallet(10000)"
                                 class="bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-xs px-4 py-3 rounded-xl transition">
-                            + Top Up <span x-text="formatMoney(5000)"></span>
+                            + Top Up <span x-text="formatMoney(10000)"></span>
                         </button>
-                        <button @click="activeTab = 'post'"
+                        <button @click="activeTab = 'banks'"
                                 class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs px-4 py-3 rounded-xl transition">
-                            Use Balance to Post Task →
+                            Link Bank Accounts →
                         </button>
                     </div>
                 </div>
 
-                <!-- Card 2: SafeLock™ Earnings Vault (Strict ₦20,000 Rule) -->
+                <!-- Card 2: SafeLock™ Vault (Strict ₦20,000 Withdrawal Threshold) -->
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-jobterBlue shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold uppercase tracking-wider text-jobterBlue">SafeLock™ Earnings Vault</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-jobterBlue">SafeLock™ Vault</span>
                             <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full"
                                   :class="safeLockBalance >= minWithdrawal ? 'bg-emerald-100 text-emerald-700' : 'bg-jobterBlueLight text-jobterBlue'"
-                                  x-text="safeLockBalance >= minWithdrawal ? '🔓 Unlocked' : '🔒 Min ' + formatMoney(minWithdrawal)">
+                                  x-text="safeLockBalance >= minWithdrawal ? '🔓 Withdrawal Unlocked' : '🔒 Locked (< ' + formatMoney(minWithdrawal) + ')'">
                             </span>
                         </div>
 
                         <div class="text-3xl sm:text-4xl font-extrabold text-jobterBlack mt-2" x-text="formatMoney(safeLockBalance)"></div>
 
-                        <!-- Progress Bar Toward ₦20,000 -->
                         <div class="mt-4">
                             <div class="flex justify-between text-xs font-bold mb-1.5">
-                                <span class="text-slate-500">Progress to <span x-text="formatMoney(minWithdrawal)"></span> withdrawal</span>
+                                <span class="text-slate-500">Progress to <span x-text="formatMoney(minWithdrawal)"></span> threshold</span>
                                 <span class="text-jobterBlack" x-text="Math.min(100, Math.round((safeLockBalance / minWithdrawal) * 100)) + '%'"></span>
                             </div>
                             <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
@@ -525,7 +487,7 @@
                         </div>
 
                         <p class="text-xs text-slate-500 mt-3 leading-relaxed">
-                            You can only withdraw to your bank account when your SafeLock™ balance reaches at least <strong class="text-jobterBlack" x-text="formatMoney(minWithdrawal)"></strong>.
+                            SafeLock™ has no ceiling on how much it can hold, but withdrawals to your bank require a minimum balance of <strong class="text-jobterBlack" x-text="formatMoney(minWithdrawal)"></strong>.
                         </p>
                     </div>
 
@@ -535,16 +497,16 @@
                                 :class="safeLockBalance >= minWithdrawal ? 'bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-500 cursor-not-allowed'"
                                 class="w-full font-bold text-xs py-3.5 px-4 rounded-xl transition">
                             <span x-show="safeLockBalance < minWithdrawal">
-                                🔒 Earn <span x-text="formatMoney(minWithdrawal - safeLockBalance)"></span> More to Withdraw
+                                🔒 Earn <span x-text="formatMoney(minWithdrawal - safeLockBalance)"></span> More to Unlock Withdrawal
                             </span>
                             <span x-show="safeLockBalance >= minWithdrawal">
-                                🏦 Withdraw <span x-text="formatMoney(safeLockBalance)"></span> to Bank Now
+                                🏦 Withdraw <span x-text="formatMoney(safeLockBalance)"></span> to Bank
                             </span>
                         </button>
 
-                        <button @click="simulateTaskCompletion(4500)"
+                        <button @click="simulateTaskCompletion(5000)"
                                 class="w-full bg-jobterBlueLight hover:bg-blue-100 text-jobterBlue font-bold text-xs py-2.5 px-4 rounded-xl transition">
-                            ⚡ Simulate Completing a Task (+<span x-text="formatMoney(4500)"></span>)
+                            ⚡ Simulate Earning (+<span x-text="formatMoney(5000)"></span>)
                         </button>
                     </div>
                 </div>
@@ -553,15 +515,89 @@
         </section>
 
         <!-- =============================================================== -->
-        <!-- VIEW 4: ACTIVE CHATS (Photo Upload + Voice Note VN Recorder)    -->
+        <!-- VIEW 4: BANK ACCOUNTS (Link Nigerian Banks)                    -->
+        <!-- =============================================================== -->
+        <section x-show="activeTab === 'banks'" x-cloak x-transition.opacity class="max-w-2xl mx-auto">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-jobterBlue">Payout Destination</span>
+                    <h2 class="text-2xl font-extrabold text-jobterBlack mt-0.5">Linked Bank Accounts</h2>
+                    <p class="text-xs text-slate-500 mt-1">Connect your verified Nigerian commercial bank account for instant SafeLock™ withdrawals.</p>
+                </div>
+
+                <!-- Linked Accounts List -->
+                <div class="space-y-3">
+                    <template x-for="acc in linkedBanks" :key="acc.accountNumber">
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-xl bg-jobterBlue text-white font-extrabold text-xs flex items-center justify-center">
+                                    🏦
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-jobterBlack" x-text="acc.bankName"></p>
+                                    <p class="text-xs text-slate-500" x-text="acc.accountNumber + ' • ' + acc.accountName"></p>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-full">
+                                ✓ Verified
+                            </span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Add Bank Form -->
+                <form @submit.prevent="addBankAccount()" class="border-t border-slate-100 pt-5 space-y-4">
+                    <h3 class="font-bold text-sm text-jobterBlack">Add New Bank Account</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Select Bank</label>
+                            <select x-model="newBank.bankName" required
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs font-semibold text-jobterBlack focus:outline-none focus:border-jobterBlue">
+                                <option value="">Choose Bank...</option>
+                                <option value="Guaranty Trust Bank (GTB)">Guaranty Trust Bank (GTB)</option>
+                                <option value="Zenith Bank">Zenith Bank</option>
+                                <option value="Access Bank">Access Bank</option>
+                                <option value="United Bank for Africa (UBA)">United Bank for Africa (UBA)</option>
+                                <option value="First Bank of Nigeria">First Bank of Nigeria</option>
+                                <option value="Opay Digital Services">Opay Digital Services</option>
+                                <option value="Kuda Bank">Kuda Bank</option>
+                                <option value="Moniepoint MFB">Moniepoint MFB</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">10-Digit Account Number</label>
+                            <input type="text" maxlength="10" required x-model="newBank.accountNumber"
+                                   placeholder="0123456789"
+                                   class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-jobterBlack focus:outline-none focus:border-jobterBlue">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Account Holder Name (NIN Verified)</label>
+                        <input type="text" required x-model="newBank.accountName"
+                               placeholder="e.g., CHINEDU OKECHUKWU EMEKA"
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-jobterBlack focus:outline-none focus:border-jobterBlue">
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-xs py-3.5 rounded-xl transition shadow-sm">
+                        Verify & Link Bank Account
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- VIEW 5: ACTIVE CHATS (Bilateral Communication + VN + Photos)   -->
         <!-- =============================================================== -->
         <section x-show="activeTab === 'chats'" x-cloak x-transition.opacity>
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[560px]">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[580px]">
                 
-                <!-- Left Sidebar: Claimed Tasks List (4 cols) -->
+                <!-- Left Chat List (4 cols) -->
                 <div class="md:col-span-4 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50/60 flex flex-col">
                     <div class="p-4 bg-jobterBlack text-white flex items-center justify-between">
-                        <span class="font-bold text-sm">Claimed Tasks</span>
+                        <span class="font-bold text-sm">Active Deal Chats</span>
                         <span class="text-[11px] bg-jobterBlue px-2 py-0.5 rounded-full font-bold"
                               x-text="chatTasks.length"></span>
                     </div>
@@ -577,33 +613,32 @@
                                 <p class="text-xs text-slate-600 font-medium truncate mt-1" x-text="ct.title"></p>
                                 <span class="inline-block text-[10px] font-bold mt-1.5 px-2 py-0.5 rounded"
                                       :class="ct.status === 'completed' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-700'"
-                                      x-text="ct.status === 'completed' ? '✓ Paid to SafeLock' : 'In Progress'"></span>
+                                      x-text="ct.status === 'completed' ? '✓ Completed' : 'In Progress'"></span>
                             </button>
                         </template>
                     </div>
                 </div>
 
-                <!-- Right Chat Panel (8 cols) -->
-                <div class="md:col-span-8 flex flex-col h-[560px]" x-show="currentChatTask">
-                    <!-- Chat Header with Mark Completed Button -->
+                <!-- Right Bilateral Chat Panel (8 cols) -->
+                <div class="md:col-span-8 flex flex-col h-[580px]" x-show="currentChatTask">
                     <div class="p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 bg-white">
                         <div>
                             <h3 class="font-bold text-sm text-jobterBlack" x-text="currentChatTask?.title"></h3>
                             <p class="text-xs text-slate-500">
                                 <span x-text="currentChatTask?.state + ' (' + currentChatTask?.location + ')'"></span> •
-                                Locked Offer: <strong class="text-jobterBlue" x-text="formatMoney(currentChatTask?.agreedPrice || currentChatTask?.maxPrice)"></strong>
+                                Agreed Offer: <strong class="text-jobterBlue" x-text="formatMoney(currentChatTask?.agreedPrice || currentChatTask?.maxPrice)"></strong>
                             </p>
                         </div>
 
                         <template x-if="currentChatTask && currentChatTask.status !== 'completed'">
                             <button @click="markChatTaskCompleted()"
                                     class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">
-                                ✓ Mark Task Completed (Release to SafeLock)
+                                ✓ Mark Task Completed & Release Escrow
                             </button>
                         </template>
                         <template x-if="currentChatTask && currentChatTask.status === 'completed'">
                             <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs px-3 py-2 rounded-xl">
-                                ✓ Released to SafeLock™
+                                ✓ Escrow Released Successfully
                             </span>
                         </template>
                     </div>
@@ -615,20 +650,17 @@
                                 <div :class="m.sender === 'me' ? 'bg-jobterBlue text-white rounded-2xl rounded-tr-sm' : 'bg-white text-jobterBlack border border-slate-200 rounded-2xl rounded-tl-sm'"
                                      class="max-w-[80%] sm:max-w-[70%] px-4 py-3 text-xs space-y-1.5 shadow-sm">
                                     
-                                    <!-- Text Message -->
                                     <template x-if="m.type === 'text'">
                                         <p class="leading-relaxed" x-text="m.text"></p>
                                     </template>
 
-                                    <!-- Uploaded Photo / Receipt Proof -->
                                     <template x-if="m.type === 'photo'">
                                         <div class="space-y-1.5">
-                                            <img :src="m.url" alt="Uploaded Proof" class="rounded-xl max-h-48 w-full object-cover border border-white/20">
+                                            <img :src="m.url" alt="Proof" class="rounded-xl max-h-48 w-full object-cover border border-white/20">
                                             <p class="font-semibold text-[11px]" x-text="m.caption"></p>
                                         </div>
                                     </template>
 
-                                    <!-- Playable Voice Note (VN) -->
                                     <template x-if="m.type === 'vn'">
                                         <div class="flex items-center space-x-3 min-w-[190px] py-1">
                                             <button type="button" @click="toggleVNPlay(m)"
@@ -658,33 +690,30 @@
                         </template>
                     </div>
 
-                    <!-- Chat Controls: Photo Upload, VN Recorder & Text Input -->
+                    <!-- Chat Controls (Bilateral communication with Photo & VN) -->
                     <div class="p-3.5 bg-white border-t border-slate-200 space-y-2.5">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <!-- Photo File Upload -->
                             <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 text-jobterBlack font-semibold text-xs px-3 py-1.5 rounded-lg transition inline-flex items-center space-x-1.5">
-                                <span>📷 Upload Photo / Receipt</span>
+                                <span>📷 Upload Photo / Proof</span>
                                 <input type="file" accept="image/*" class="hidden" @change="uploadChatPhoto($event)">
                             </label>
 
-                            <!-- Instant Sample Photo Button -->
                             <button type="button" @click="sendSampleReceipt()"
                                     class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-3 py-1.5 rounded-lg transition">
                                 🧾 Send Sample Proof Card
                             </button>
 
-                            <!-- Voice Note (VN) Recorder Button -->
                             <button type="button" @click="toggleRecordVN()"
                                     :class="recordingVN ? 'bg-red-600 text-white animate-pulse' : 'bg-jobterBlueLight text-jobterBlue'"
                                     class="font-bold text-xs px-3 py-1.5 rounded-lg transition">
-                                <span x-show="!recordingVN">🎤 Record Voice Note (VN)</span>
-                                <span x-show="recordingVN">⏹ Stop & Send VN (0:0<span x-text="vnTimer"></span>)</span>
+                                <span x-show="!recordingVN">🎤 Record VN</span>
+                                <span x-show="recordingVN">⏹ Stop VN (0:0<span x-text="vnTimer"></span>)</span>
                             </button>
                         </div>
 
                         <form @submit.prevent="sendTextMessage()" class="flex items-center gap-2">
                             <input type="text" x-model="chatText"
-                                   placeholder="Type a message to the task poster..."
+                                   placeholder="Type message to task partner (Setter or Jobber)..."
                                    class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-jobterBlack focus:outline-none focus:bg-white focus:border-jobterBlue">
                             <button type="submit"
                                     class="bg-jobterBlack hover:bg-jobterBlue text-white font-bold text-xs px-5 py-2.5 rounded-xl transition">
@@ -696,10 +725,86 @@
             </div>
         </section>
 
+        <!-- =============================================================== -->
+        <!-- VIEW 6: FAQ PAGE (Comprehensive Questions & Answers)           -->
+        <!-- =============================================================== -->
+        <section x-show="activeTab === 'faq'" x-cloak x-transition.opacity class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-jobterBlue">Help & Support Center</span>
+                    <h2 class="text-2xl font-extrabold text-jobterBlack mt-0.5">Frequently Asked Questions</h2>
+                    <p class="text-xs text-slate-500 mt-1">Everything you need to know about Jobter escrow, SafeLock withdrawals, and security verification.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-sm text-jobterBlack">1. How does Jobter Escrow protect task setters and jobbers?</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">When a task setter posts a job or accepts an offer, the funds are locked in secure escrow. The jobber can perform the task with absolute peace of mind knowing the money is already deposited. Funds are only released to the jobber's SafeLock™ once the task is successfully completed and approved.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-sm text-jobterBlack">2. Why is there a ₦20,000 minimum threshold for SafeLock withdrawals?</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">SafeLock™ has no ceiling on how much it can hold. However, to maintain optimal bank transfer processing fees and ensure anti-fraud compliance under Nigerian financial regulations, direct bank withdrawals require a minimum balance of ₦20,000.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-sm text-jobterBlack">3. Is NIN and Utility Bill verification mandatory?</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Yes. To protect our community from scammers and ensure all micro-task participants are genuine, claiming or posting tasks requires a quick NIN and utility bill verification.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-sm text-jobterBlack">4. Can task setters and jobbers communicate directly?</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Absolutely! Once a task is claimed, both parties gain access to a real-time bilateral chat supporting text messages, photo/receipt uploads, and playable Voice Notes (VNs).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- =================================================================== -->
-    <!-- MODAL: JOBBER "PICK YOUR PRICE" RANGE NEGOTIATION                   -->
+    <!-- MODAL 1: MANDATORY NIN & UTILITY BILL SECURITY VERIFICATION        -->
+    <!-- =================================================================== -->
+    <div x-show="verificationModalOpen" x-cloak x-transition.opacity
+         class="fixed inset-0 z-50 bg-jobterBlack/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div @click.away="verificationModalOpen = false"
+             class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 border border-slate-200 shadow-2xl space-y-5">
+            
+            <div class="flex items-start justify-between">
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-jobterBlue">Security & Compliance</span>
+                    <h3 class="font-extrabold text-xl text-jobterBlack mt-0.5">Identity Verification (NIN)</h3>
+                </div>
+                <button @click="verificationModalOpen = false" class="text-slate-400 hover:text-jobterBlack font-bold text-lg leading-none">✕</button>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+                To prevent fraud and protect money transactions on Jobter, please enter your 11-digit National Identification Number (NIN) and upload a recent utility bill.
+            </p>
+
+            <form @submit.prevent="submitVerification()" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">11-Digit NIN Number</label>
+                    <input type="text" maxlength="11" required x-model="verificationForm.nin"
+                           placeholder="22100495832"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-jobterBlack focus:outline-none focus:border-jobterBlue">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Upload Utility Bill (PHED, Ikeja Electric, Water, etc.)</label>
+                    <input type="file" accept="image/*,.pdf" required class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-600">
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-sm py-3.5 rounded-xl transition shadow-sm">
+                    Submit for Instant Verification
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- MODAL 2: JOBBER "PICK YOUR PRICE" RANGE NEGOTIATION                   -->
     <!-- =================================================================== -->
     <div x-show="claimModalOpen" x-cloak x-transition.opacity
          class="fixed inset-0 z-50 bg-jobterBlack/70 backdrop-blur-sm flex items-center justify-center p-4">
@@ -708,8 +813,8 @@
             
             <div class="flex items-start justify-between">
                 <div>
-                    <span class="text-[11px] font-bold uppercase tracking-wider text-jobterBlue">Pick Your Price</span>
-                    <h3 class="font-extrabold text-xl text-jobterBlack mt-0.5">Lock In Your Offer</h3>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-jobterBlue">Jobber Deal Negotiation</span>
+                    <h3 class="font-extrabold text-xl text-jobterBlack mt-0.5">Pick Your Offer</h3>
                 </div>
                 <button @click="claimModalOpen = false" class="text-slate-400 hover:text-jobterBlack font-bold text-lg leading-none">✕</button>
             </div>
@@ -719,40 +824,39 @@
                 <p class="font-bold text-sm text-jobterBlack mt-1" x-text="claimingTask?.title"></p>
             </div>
 
-            <!-- Interactive Slider Inside Setter's Min-Max Range -->
             <div class="space-y-3">
                 <div class="flex justify-between text-xs font-semibold text-slate-500">
-                    <span>Min: <strong x-text="claimingTask ? formatMoney(claimingTask.minPrice) : ''"></strong></span>
-                    <span>Max: <strong x-text="claimingTask ? formatMoney(claimingTask.maxPrice) : ''"></strong></span>
+                    <span>Min Budget: <strong x-text="claimingTask ? formatMoney(claimingTask.minPrice) : ''"></strong></span>
+                    <span>Max Escrow: <strong x-text="claimingTask ? formatMoney(claimingTask.maxPrice) : ''"></strong></span>
                 </div>
 
                 <div class="bg-jobterBlueLight border border-jobterBlue/30 rounded-2xl p-4 text-center">
-                    <span class="text-xs font-medium text-slate-600 block">Your Offer to Lock In</span>
+                    <span class="text-xs font-medium text-slate-600 block">Your Chosen Offer</span>
                     <span class="font-extrabold text-3xl text-jobterBlue mt-1 block" x-text="formatMoney(chosenOffer)"></span>
                 </div>
 
                 <input type="range" class="jobter-range"
                        :min="claimingTask?.minPrice || 1000"
-                       :max="claimingTask?.maxPrice || 5000"
-                       step="100"
+                       :max="claimingTask?.maxPrice || 10000"
+                       step="500"
                        x-model.number="chosenOffer">
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Quick Note to Task Setter</label>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Message to Task Setter</label>
                 <input type="text" x-model="claimNote"
                        class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-jobterBlack focus:outline-none focus:border-jobterBlue">
             </div>
 
             <button @click="confirmClaimTask()"
                     class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-sm py-3.5 rounded-xl transition shadow-sm">
-                Lock In <span x-text="formatMoney(chosenOffer)"></span> & Open Chat
+                Lock In <span x-text="formatMoney(chosenOffer)"></span> & Open Deal Chat
             </button>
         </div>
     </div>
 
     <!-- =================================================================== -->
-    <!-- COMPLETE ALPINE.JS STATE & LOGIC                                    -->
+    <!-- ALPINE.JS CORE LOGIC & STATE                                        -->
     <!-- =================================================================== -->
     <script>
         function jobterApp() {
@@ -762,10 +866,21 @@
                 rates: { NGN: 1, USD: 0.00065, GBP: 0.00051, EUR: 0.00060 },
                 symbols: { NGN: '₦', USD: '$', GBP: '£', EUR: '€' },
 
-                // Wallet & SafeLock™ Balances (Base NGN)
-                walletBalance: 18500,
-                safeLockBalance: 16500, // Starts at ₦16,500 so 1 task completion crosses ₦20,000!
+                // Verification State
+                isVerified: false,
+                verificationModalOpen: false,
+                verificationForm: { nin: '' },
+
+                // Wallet & SafeLock™ (Strict ₦20k withdrawal threshold)
+                walletBalance: 45000,
+                safeLockBalance: 28500, // Above ₦20,000 withdrawal threshold!
                 minWithdrawal: 20000,
+
+                // Linked Banks
+                linkedBanks: [
+                    { bankName: 'Guaranty Trust Bank (GTB)', accountNumber: '0123456789', accountName: 'CHINEDU OKECHUKWU EMEKA' }
+                ],
+                newBank: { bankName: '', accountNumber: '', accountName: '' },
 
                 // All 36 Nigerian States + FCT + Remote
                 statesList: [
@@ -778,178 +893,105 @@
 
                 categories: ['All', 'Student Gigs', 'Market & Errands', 'Beauty & Tailoring', 'Remote', 'Sharp-Sharp'],
 
-                // Filters
                 selectedState: 'All',
                 selectedCategory: 'All',
                 searchQuery: '',
 
-                // 12 Realistic, Grounded Nigerian Tasks
+                // Realistic Grounded Nigerian Tasks
                 tasks: [
                     {
                         id: 1,
                         title: 'Help bind & submit 3 copies of final year project at Senate Building',
-                        description: 'Errand fee only. Print shop is right beside the faculty quadrangle; send photo proof once stamped.',
+                        description: 'Print shop is right beside the faculty quadrangle; send photo proof once stamped.',
                         state: 'Lagos',
                         location: 'UNILAG Akoka',
                         category: 'Student Gigs',
-                        minPrice: 1500,
-                        maxPrice: 2500,
+                        minPrice: 2000,
+                        maxPrice: 4500,
                         agreedPrice: null,
                         status: 'open'
                     },
                     {
                         id: 2,
-                        title: 'Type 25 pages of handwritten lecture notes into MS Word',
-                        description: 'Clear handwriting. I will send clear page snapshots in chat immediately after you claim.',
-                        state: 'Osun',
-                        location: 'OAU Ife',
-                        category: 'Student Gigs',
-                        minPrice: 2500,
-                        maxPrice: 4000,
+                        title: 'Deliver fragile wedding Aso-Ebi from Surulere to Lekki Phase 1',
+                        description: 'Handle with care. Pick up at Bode Thomas and drop off at Admiralty Way.',
+                        state: 'Lagos',
+                        location: 'Surulere to Lekki',
+                        category: 'Sharp-Sharp',
+                        minPrice: 8000,
+                        maxPrice: 18500,
                         agreedPrice: null,
                         status: 'open'
                     },
                     {
                         id: 3,
-                        title: 'Hold front-row seat & take GST 102 attendance note',
-                        description: '8 AM lecture at Large Lecture Theatre. Just keep a seat for me and send a quick VN when the lecturer arrives.',
-                        state: 'Oyo',
-                        location: 'UI Ibadan',
+                        title: 'Type 30 pages of handwritten notes into MS Word document',
+                        description: 'Clear handwriting. Snapshots will be provided in chat immediately after claiming.',
+                        state: 'Osun',
+                        location: 'OAU Ife',
                         category: 'Student Gigs',
-                        minPrice: 1000,
-                        maxPrice: 1800,
+                        minPrice: 3000,
+                        maxPrice: 7000,
                         agreedPrice: null,
                         status: 'open'
                     },
                     {
                         id: 4,
-                        title: 'Pick up signed departmental clearance form from Faculty Officer',
-                        description: 'Pick up at Faculty of Arts Room 12 and drop off at Balewa Hostel porter lodge.',
-                        state: 'Enugu',
-                        location: 'UNN Nsukka',
-                        category: 'Student Gigs',
-                        minPrice: 1500,
-                        maxPrice: 2500,
+                        title: 'Home service knotless braids (Medium, waist length - attachments ready)',
+                        description: 'Neat parting required at my Wuse 2 apartment.',
+                        state: 'FCT Abuja',
+                        location: 'Wuse 2',
+                        category: 'Beauty & Tailoring',
+                        minPrice: 7500,
+                        maxPrice: 15000,
                         agreedPrice: null,
                         status: 'open'
                     },
                     {
                         id: 5,
-                        title: 'Buy fresh tomatoes, rodo, tatashe & Ponmo at Mile 12 Market',
-                        description: 'Errand fee only. Send a live photo of the basket and a quick VN before paying the seller.',
-                        state: 'Lagos',
-                        location: 'Ketu / Mile 12',
+                        title: 'Refill 12.5kg cooking gas cylinder at NIPCO station & return',
+                        description: 'Pick up cylinder at GRA Extension and upload receipt photo in chat.',
+                        state: 'Rivers',
+                        location: 'PH GRA',
                         category: 'Market & Errands',
                         minPrice: 2500,
-                        maxPrice: 4000,
-                        agreedPrice: null,
-                        status: 'open'
-                    },
-                    {
-                        id: 6,
-                        title: 'Home service knotless braids (Medium, waist length - extensions ready)',
-                        description: 'Pre-stretched expression attachments already bought. Neat parting required at my Wuse 2 apartment.',
-                        state: 'FCT Abuja',
-                        location: 'Wuse 2',
-                        category: 'Beauty & Tailoring',
-                        minPrice: 6000,
-                        maxPrice: 9500,
-                        agreedPrice: null,
-                        status: 'open'
-                    },
-                    {
-                        id: 7,
-                        title: 'Urgent Agbada & Senator trouser amendment before Saturday owambe',
-                        description: 'Slim-fit trouser tapering and steam pressing needed at Bode Thomas, Surulere.',
-                        state: 'Lagos',
-                        location: 'Surulere',
-                        category: 'Beauty & Tailoring',
-                        minPrice: 3000,
                         maxPrice: 5000,
                         agreedPrice: null,
                         status: 'open'
                     },
                     {
-                        id: 8,
-                        title: 'Refill 12.5kg cooking gas cylinder at NIPCO station & return',
-                        description: 'Pick up cylinder at Tombia Street Extension, refill at NIPCO, and upload receipt photo in chat.',
-                        state: 'Rivers',
-                        location: 'PH GRA',
-                        category: 'Market & Errands',
-                        minPrice: 1500,
-                        maxPrice: 2500,
-                        agreedPrice: null,
-                        status: 'open'
-                    },
-                    {
-                        id: 9,
-                        title: 'Check out a clean student self-con apartment & send video tour',
-                        description: 'Inspect water running, wardrobe, and street security off University Road, Tanke before I pay agent.',
-                        state: 'Kwara',
-                        location: 'Ilorin Tanke',
-                        category: 'Student Gigs',
-                        minPrice: 2500,
-                        maxPrice: 4000,
-                        agreedPrice: null,
-                        status: 'open'
-                    },
-                    {
-                        id: 10,
-                        title: 'Pick up native Aso-Ebi fabric from Gbagi Market & waybill at park',
-                        description: 'Collect 6 bundles from Alhaja shop at New Gbagi and hand over to Iwo Road driver with waybill receipt.',
-                        state: 'Oyo',
-                        location: 'Ibadan',
-                        category: 'Market & Errands',
-                        minPrice: 2000,
-                        maxPrice: 3500,
-                        agreedPrice: null,
-                        status: 'open'
-                    },
-                    {
-                        id: 11,
-                        title: 'Design 4 clean WhatsApp status flyers for campus thrift store',
-                        description: 'Clean typography and product cutouts. Can be done on Canva or Photoshop from anywhere.',
+                        id: 6,
+                        title: 'Design 5 clean WhatsApp status flyers for campus thrift store',
+                        description: 'Canva or Photoshop format. Remote work from anywhere in Nigeria.',
                         state: 'Remote',
                         location: 'Nationwide',
                         category: 'Remote',
-                        minPrice: 3500,
-                        maxPrice: 6000,
-                        agreedPrice: null,
-                        status: 'open'
-                    },
-                    {
-                        id: 12,
-                        title: 'Deliver forgotten laptop charger from Ikeja Along to Yaba tech hub',
-                        description: 'Pick up Type-C MacBook charger from receptionist at Ikeja and drop off at Herbert Macaulay Way, Yaba.',
-                        state: 'Lagos',
-                        location: 'Ikeja to Yaba',
-                        category: 'Sharp-Sharp',
-                        minPrice: 2000,
-                        maxPrice: 3200,
-                        agreedPrice: 2800,
+                        minPrice: 5000,
+                        maxPrice: 12000,
+                        agreedPrice: 8500,
                         status: 'claimed'
                     }
                 ],
 
-                // Post Task Form State
+                // Post Form State
                 postForm: {
                     title: '',
                     state: 'Lagos',
                     location: '',
                     category: 'Student Gigs',
                     description: '',
-                    minPrice: 1500,
-                    maxPrice: 3000,
+                    minPrice: 3000,
+                    maxPrice: 10000,
                     fundFromWallet: true
                 },
 
                 // Claim Modal State
                 claimModalOpen: false,
                 claimingTask: null,
-                chosenOffer: 2000,
-                claimNote: 'I am close by and ready to handle this right away!',
+                chosenOffer: 5000,
+                claimNote: 'Ready to handle this professionally right away!',
 
-                // Chat & Voice Note State
+                // Bilateral Chat State
                 currentChatTask: null,
                 chatText: '',
                 messagesByTask: {},
@@ -959,28 +1001,26 @@
                 toasts: [],
 
                 init() {
-                    // Seed default chat messages for Task #12
-                    this.messagesByTask[12] = [
+                    this.messagesByTask[6] = [
                         {
-                            id: 101,
+                            id: 201,
                             sender: 'poster',
                             type: 'text',
-                            text: 'Hi! Thanks for locking in ₦2,800 to bring my laptop charger from Ikeja Along to Yaba. Send a photo or VN once you pick it up!',
-                            time: '11:15 AM'
+                            text: 'Hi! Let us get started on the 5 thrift store flyers. Send drafts here anytime.',
+                            time: '10:00 AM'
                         },
                         {
-                            id: 102,
+                            id: 202,
                             sender: 'me',
                             type: 'vn',
-                            duration: '0:05',
+                            duration: '0:06',
                             playing: false,
-                            time: '11:18 AM'
+                            time: '10:05 AM'
                         }
                     ];
-                    this.currentChatTask = this.tasks.find(t => t.id === 12) || this.tasks[0];
+                    this.currentChatTask = this.tasks.find(t => t.id === 6) || this.tasks[0];
                 },
 
-                // Currency Helper
                 formatMoney(amountNGN) {
                     const sym = this.symbols[this.currency];
                     const converted = (Number(amountNGN) || 0) * this.rates[this.currency];
@@ -1021,7 +1061,7 @@
                                 id: Date.now(),
                                 sender: 'poster',
                                 type: 'text',
-                                text: `Offer locked at ${this.formatMoney(this.currentChatTask.agreedPrice || this.currentChatTask.maxPrice)}. Upload a photo receipt or Voice Note here anytime!`,
+                                text: `Escrow secured at ${this.formatMoney(this.currentChatTask.agreedPrice || this.currentChatTask.maxPrice)}. Chat with your task partner here!`,
                                 time: 'Just now'
                             }
                         ];
@@ -1037,14 +1077,44 @@
                     }, 4200);
                 },
 
-                // Post New Task
+                openVerificationModal() {
+                    this.verificationModalOpen = true;
+                },
+
+                submitVerification() {
+                    if (this.verificationForm.nin.length !== 11) {
+                        this.notify('Invalid NIN', 'Please enter a valid 11-digit NIN number.');
+                        return;
+                    }
+                    this.isVerified = true;
+                    this.verificationModalOpen = false;
+                    this.notify('Verification Successful! 🛡️', 'Your NIN and utility bill have been verified.');
+                },
+
+                handleClaimTaskClick(task) {
+                    if (!this.isVerified) {
+                        this.notify('Verification Required', 'Please verify your NIN before claiming or posting tasks.');
+                        this.verificationModalOpen = true;
+                        return;
+                    }
+                    this.claimingTask = task;
+                    this.chosenOffer = Math.round((task.minPrice + task.maxPrice) / 2);
+                    this.claimModalOpen = true;
+                },
+
                 createNewTask() {
+                    if (!this.isVerified) {
+                        this.notify('Verification Required', 'Please verify your NIN before posting tasks.');
+                        this.verificationModalOpen = true;
+                        return;
+                    }
+
                     const minP = Number(this.postForm.minPrice);
                     const maxP = Number(this.postForm.maxPrice);
 
                     if (this.postForm.fundFromWallet) {
                         if (maxP > this.walletBalance) {
-                            this.notify('Insufficient Wallet Balance', 'Please top up your Jobter Wallet first.');
+                            this.notify('Insufficient Wallet Balance', 'Top up your wallet to fund this task escrow.');
                             this.activeTab = 'wallet';
                             return;
                         }
@@ -1068,21 +1138,11 @@
                     this.postForm.title = '';
                     this.postForm.location = '';
                     this.postForm.description = '';
-                    this.selectedState = 'All';
-                    this.selectedCategory = 'All';
 
-                    this.notify('Task Published Live', `Escrow locked: ${this.formatMoney(maxP)} from your wallet.`);
+                    this.notify('Task Published Live', `Escrow locked: ${this.formatMoney(maxP)}.`);
                     this.activeTab = 'explore';
                 },
 
-                // Open Claim Modal
-                openClaimModal(task) {
-                    this.claimingTask = task;
-                    this.chosenOffer = Math.round(((task.minPrice + task.maxPrice) / 2) / 100) * 100;
-                    this.claimModalOpen = true;
-                },
-
-                // Confirm Claim & Open Chat
                 confirmClaimTask() {
                     if (!this.claimingTask) return;
                     this.claimingTask.agreedPrice = this.chosenOffer;
@@ -1095,7 +1155,7 @@
                             id: Date.now() - 10,
                             sender: 'poster',
                             type: 'text',
-                            text: `Deal locked at ${this.formatMoney(this.chosenOffer)} in SafeLock™ Escrow! Please keep me updated here.`,
+                            text: `Deal agreed at ${this.formatMoney(this.chosenOffer)} in escrow!`,
                             time: now
                         },
                         {
@@ -1109,7 +1169,7 @@
 
                     this.currentChatTask = this.claimingTask;
                     this.claimModalOpen = false;
-                    this.notify('Task Claimed!', `Locked in at ${this.formatMoney(this.chosenOffer)}. Chat is now open.`);
+                    this.notify('Task Claimed!', `Deal locked at ${this.formatMoney(this.chosenOffer)}. Chat is now live.`);
                     this.activeTab = 'chats';
                 },
 
@@ -1122,7 +1182,6 @@
                     this.currentChatTask = task;
                 },
 
-                // Chat Actions
                 sendTextMessage() {
                     if (!this.chatText.trim() || !this.currentChatTask) return;
                     const tid = this.currentChatTask.id;
@@ -1148,7 +1207,7 @@
                             sender: 'me',
                             type: 'photo',
                             url: e.target.result,
-                            caption: '📷 Uploaded Receipt / Proof: ' + file.name,
+                            caption: '📷 Proof / Receipt: ' + file.name,
                             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                         });
                         this.autoScrollChat();
@@ -1163,8 +1222,8 @@
                         id: Date.now(),
                         sender: 'me',
                         type: 'photo',
-                        url: 'https://placehold.co/600x360/0F172A/0066FF?text=Verified+Task+Receipt+%26+Photo+Proof',
-                        caption: '🧾 Live Task & Receipt Proof Verified',
+                        url: 'https://placehold.co/600x360/0F172A/0066FF?text=Verified+Task+Receipt+Proof',
+                        caption: '🧾 Verified Task Receipt & Photo Proof',
                         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     });
                     this.autoScrollChat();
@@ -1211,29 +1270,27 @@
                     }, 50);
                 },
 
-                // Mark Task Completed in Chat -> Credits SafeLock™
                 markChatTaskCompleted() {
                     if (!this.currentChatTask || this.currentChatTask.status === 'completed') return;
                     const amount = this.currentChatTask.agreedPrice || this.currentChatTask.maxPrice;
                     this.currentChatTask.status = 'completed';
                     this.safeLockBalance += amount;
                     this.notify(
-                        'Released to SafeLock™!',
+                        'Escrow Released!',
                         `+${this.formatMoney(amount)} added to your SafeLock™ Vault.`
                     );
                 },
 
-                // Wallet & SafeLock™ Helpers
                 topUpWallet(amountNGN) {
                     this.walletBalance += amountNGN;
-                    this.notify('Wallet Topped Up', `+${this.formatMoney(amountNGN)} added to your spendable balance.`);
+                    this.notify('Wallet Funded', `+${this.formatMoney(amountNGN)} added to wallet.`);
                 },
 
                 simulateTaskCompletion(amountNGN) {
                     this.safeLockBalance += amountNGN;
                     this.notify(
                         'SafeLock™ Credited!',
-                        `+${this.formatMoney(amountNGN)} added. SafeLock™ balance is now ${this.formatMoney(this.safeLockBalance)}.`
+                        `+${this.formatMoney(amountNGN)} added. SafeLock balance: ${this.formatMoney(this.safeLockBalance)}`
                     );
                 },
 
@@ -1241,7 +1298,16 @@
                     if (this.safeLockBalance < this.minWithdrawal) return;
                     const paid = this.formatMoney(this.safeLockBalance);
                     this.safeLockBalance = 0;
-                    this.notify('Withdrawal Successful! 🏦', `${paid} has been sent to your bank account.`);
+                    this.notify('Withdrawal Successful! 🏦', `${paid} sent to your linked bank account.`);
+                },
+
+                addBankAccount() {
+                    if (!this.newBank.bankName || !this.newBank.accountNumber || !this.newBank.accountName) return;
+                    this.linkedBanks.push({ ...this.newBank });
+                    this.newBank.bankName = '';
+                    this.newBank.accountNumber = '';
+                    this.newBank.accountName = '';
+                    this.notify('Bank Account Linked!', 'Your payout account was successfully verified.');
                 }
             }
         }
