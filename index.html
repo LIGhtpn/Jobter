@@ -142,12 +142,27 @@
         <header class="max-w-7xl mx-auto w-full px-6 sm:px-10 pt-6 sm:pt-8 z-10 flex items-center justify-between">
             <div class="flex items-center space-x-3.5">
                 <div class="w-14 h-14 bg-white rounded-2xl p-1 flex items-center justify-center shadow-md border border-slate-200 overflow-hidden shrink-0">
-                    <img src="1003766780_3.jpg" alt="Jobter Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <svg style="display:none;" viewBox="0 0 120 120" class="w-full h-full"><circle cx="76" cy="22" r="11" fill="#0F172A"/><path d="M65 38 H87 V74 C87 99 67 114 45 114 C25 114 14 100 12 82 L26 84 C28 94 35 100 45 100 C59 100 65 90 65 74 Z" fill="#0052CC"/></svg>
+                    <img src="1003820307.jpg" alt="Jobter Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <!-- High-Precision Vector Recreation of the Jobter Handshake-J Logo -->
+                    <svg style="display:none;" viewBox="0 0 200 200" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="jobterJGradIntro" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#111827"/>
+                                <stop offset="45%" stop-color="#0F172A"/>
+                                <stop offset="100%" stop-color="#0052CC"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Top Dot of J -->
+                        <circle cx="132" cy="36" r="21" fill="#111827"/>
+                        <!-- Main J Stem & Curve -->
+                        <path d="M111 68 C111 63 115 60 120 60 H144 C149 60 153 63 153 68 V124 C153 164 121 190 82 190 C47 190 25 166 22 135 L50 135 C54 152 66 162 82 162 C102 162 111 147 111 124 Z" fill="url(#jobterJGradIntro)"/>
+                        <!-- Dark Right Hand Extending from J Stem -->
+                        <path d="M112 96 L85 106 L74 99 C67 96 58 100 54 108 L47 121 C45 125 49 129 53 126 L63 114 L92 136 L112 122 Z" fill="#111827"/>
+                        <!-- Royal Blue Left Hand Shaking inside J Curve -->
+                        <path d="M22 92 L50 104 L62 103 L50 122 C46 128 53 134 59 128 L72 114 L95 135 C98 138 94 143 90 140 L76 127 L72 131 L86 145 C89 148 85 153 81 149 L67 136 L63 140 L76 153 C79 156 75 161 71 157 L57 144 L53 148 L64 159 C67 162 62 166 58 163 L36 142 L22 130 Z" fill="#0052CC"/>
+                    </svg>
                 </div>
-                <div>
-                    <span class="font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 block leading-none">Jobter</span>
-                </div>
+                <span class="font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 block leading-none">Jobter</span>
             </div>
 
             <div class="flex items-center space-x-3">
@@ -164,42 +179,46 @@
         <div class="max-w-7xl mx-auto w-full px-6 sm:px-10 py-12 sm:py-20 z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                 <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 text-jobterBlue px-4 py-1.5 rounded-full text-xs font-bold">
-                    <span>🇳🇬 Nigeria's Premier Micro-Task & Local Opportunities Marketplace</span>
+                    <span>Nigeria's Premier Micro-Task & Local Opportunities Marketplace</span>
                 </div>
 
+                <!-- Motto Exclusively Featured on the Landing Page -->
                 <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
                     Hire Local. Work Local. <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-jobterBlue via-blue-600 to-emerald-600">Grow Together.</span>
                 </h1>
 
                 <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                    Connect with vetted Nigerian artisans, remote professionals, and campus runners. Jobter securely holds task funds in escrow and releases payment when the client approves your work.
+                    Connect with vetted Nigerian artisans, remote professionals, and campus runners across all 36 States and FCT. Jobter securely holds task funds in escrow and exclusively releases payment when the client approves completed work.
                 </p>
 
                 <div class="pt-4 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                     <button @click="enterMarketplace()" class="w-full sm:w-auto bg-jobterBlue hover:bg-blue-600 text-white font-extrabold text-base px-8 py-4 rounded-2xl transition shadow-blue-glow flex items-center justify-center space-x-3 group">
-                        <span>Enter Marketplace Feed</span>
+                        <span>Explore Marketplace Tasks</span>
                         <span class="group-hover:translate-x-1.5 transition-transform text-lg">→</span>
+                    </button>
+                    <button @click="openAuthModal('explore')" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm px-6 py-4 rounded-2xl transition border border-slate-200">
+                        Be Among the First to Join
                     </button>
                 </div>
             </div>
 
             <!-- Right: Value Proposition Cards -->
             <div class="lg:col-span-5 grid grid-cols-1 gap-4">
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2 shadow-sm">
+                <div class="bg-white/90 border border-slate-200 rounded-2xl p-5 space-y-2 shadow-premium">
                     <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-jobterBlue font-bold text-lg">🔒</div>
-                    <h3 class="font-extrabold text-slate-900 text-base">Secure Escrow Protection</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Jobter holds funds safely until work is completed and approved by the task poster.</p>
+                    <h3 class="font-extrabold text-slate-900 text-base">Protected Escrow Milestone</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Task budgets are locked safely before work starts. Jobter is the sole administrator that releases escrow to the worker once the client approves deliverables.</p>
                 </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2 shadow-sm">
+                <div class="bg-white/90 border border-slate-200 rounded-2xl p-5 space-y-2 shadow-premium">
                     <div class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-lg">🛡️</div>
-                    <h3 class="font-extrabold text-slate-900 text-base">Strict ID & Alias Verification</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Every professional and campus student is verified via NIN/Utility Bill or Student ID.</p>
+                    <h3 class="font-extrabold text-slate-900 text-base">Strict Identity & Alias Verification</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">General professionals verify with NIN + NIN Image + Utility Bill, while university students verify with Student ID Card Image + Matric Number.</p>
                 </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2 shadow-sm">
+                <div class="bg-white/90 border border-slate-200 rounded-2xl p-5 space-y-2 shadow-premium">
                     <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-lg">⚡</div>
-                    <h3 class="font-extrabold text-slate-900 text-base">Instant Bank Settlements</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Withdraw your verified earnings directly to any Nigerian bank account instantly.</p>
+                    <h3 class="font-extrabold text-slate-900 text-base">Direct Bank Payouts (₦10k Minimum)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Approved earnings accumulate in your SafeLock™ Vault and can be withdrawn directly to any Nigerian bank once you reach ₦10,000.</p>
                 </div>
             </div>
         </div>
@@ -210,8 +229,8 @@
                 <span class="font-mono text-xs font-bold text-jobterBlue tracking-widest uppercase">— HIRE LOCAL. WORK LOCAL. GROW TOGETHER. —</span>
             </div>
             <div class="flex items-center space-x-6 text-xs text-slate-500">
-                <a href="#" @click.prevent="enterMarketplace()" class="hover:text-slate-900 transition">Marketplace Feed</a>
-                <a href="#" @click.prevent="helpModalOpen = true" class="hover:text-slate-900 transition">Help & FAQ Center</a>
+                <a href="#" @click.prevent="enterMarketplace()" class="hover:text-slate-900 transition font-semibold">Marketplace Feed</a>
+                <a href="#" @click.prevent="helpModalOpen = true" class="hover:text-slate-900 transition font-semibold">Help & FAQ Center</a>
             </div>
         </footer>
     </div>
@@ -231,14 +250,25 @@
                         <span class="hidden sm:inline">Intro</span>
                     </button>
 
+                    <!-- Clean Logo without Motto Underneath -->
                     <button @click="activeTab = 'explore'" class="flex items-center space-x-2.5 text-left focus:outline-none group shrink-0">
                         <div class="w-11 h-11 bg-white rounded-xl border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center shadow-xs group-hover:border-jobterBlue transition overflow-hidden">
-                            <img src="1003766780_3.jpg" alt="Jobter Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <svg style="display:none;" viewBox="0 0 120 120" class="w-full h-full"><circle cx="76" cy="22" r="11" fill="#0F172A"/><path d="M65 38 H87 V74 C87 99 67 114 45 114 C25 114 14 100 12 82 L26 84 C28 94 35 100 45 100 C59 100 65 90 65 74 Z" fill="#0052CC"/></svg>
+                            <img src="1003820307.jpg" alt="Jobter Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <svg style="display:none;" viewBox="0 0 200 200" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="jobterJGradHeader" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#111827"/>
+                                        <stop offset="45%" stop-color="#0F172A"/>
+                                        <stop offset="100%" stop-color="#0052CC"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="132" cy="36" r="21" fill="#111827"/>
+                                <path d="M111 68 C111 63 115 60 120 60 H144 C149 60 153 63 153 68 V124 C153 164 121 190 82 190 C47 190 25 166 22 135 L50 135 C54 152 66 162 82 162 C102 162 111 147 111 124 Z" fill="url(#jobterJGradHeader)"/>
+                                <path d="M112 96 L85 106 L74 99 C67 96 58 100 54 108 L47 121 C45 125 49 129 53 126 L63 114 L92 136 L112 122 Z" fill="#111827"/>
+                                <path d="M22 92 L50 104 L62 103 L50 122 C46 128 53 134 59 128 L72 114 L95 135 C98 138 94 143 90 140 L76 127 L72 131 L86 145 C89 148 85 153 81 149 L67 136 L63 140 L76 153 C79 156 75 161 71 157 L57 144 L53 148 L64 159 C67 162 62 166 58 163 L36 142 L22 130 Z" fill="#0052CC"/>
+                            </svg>
                         </div>
-                        <div>
-                            <span class="font-extrabold text-lg sm:text-xl tracking-tight text-jobterBlack dark:text-white leading-none block">Jobter</span>
-                        </div>
+                        <span class="font-extrabold text-lg sm:text-xl tracking-tight text-jobterBlack dark:text-white leading-none block">Jobter</span>
                     </button>
                 </div>
 
@@ -262,7 +292,7 @@
                 </nav>
 
                 <!-- Right Quick Controls -->
-                <div class="flex items-center space-x-2.5">
+                <div class="flex items-center space-x-2">
                     <!-- Notification Bell Button -->
                     <button @click="notificationOpen = !notificationOpen" class="relative w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-jobterBlack dark:text-white font-extrabold text-sm flex items-center justify-center transition shadow-xs" title="Notifications">
                         <span>🔔</span>
@@ -281,6 +311,19 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </button>
 
+                    <!-- Sign In / User Pill -->
+                    <template x-if="!userProfile.registered">
+                        <button @click="openAuthModal('explore')" class="bg-jobterBlue hover:bg-jobterBlueDark text-white text-xs font-extrabold px-3.5 py-2.5 rounded-xl transition shadow-xs">
+                            Sign In / Join
+                        </button>
+                    </template>
+                    <template x-if="userProfile.registered">
+                        <button @click="activeTab = 'profile'" class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-jobterBlack dark:text-white text-xs font-bold px-3 py-2 rounded-xl flex items-center space-x-1.5 border border-slate-200 dark:border-slate-700">
+                            <span x-text="userProfile.avatar || '🔧'"></span>
+                            <span class="hidden sm:inline font-mono" x-text="'@' + userProfile.alias"></span>
+                        </button>
+                    </template>
+
                     <button @click="activeTab = 'wallet'" class="bg-jobterBlack dark:bg-slate-800 hover:bg-slate-800 text-white text-xs font-bold px-3.5 py-2.5 transition shadow-xs rounded-xl flex items-center space-x-2">
                         <span class="text-slate-400 hidden md:inline">Wallet:</span>
                         <span class="font-mono text-emerald-400 font-extrabold" x-text="formatNaira(walletBalance)"></span>
@@ -291,8 +334,8 @@
             <!-- Mobile Sub-Navbar -->
             <div class="flex lg:hidden overflow-x-auto border-t border-slate-100 dark:border-slate-800 px-4 py-2 gap-2 text-xs font-bold bg-white dark:bg-jobterDarkCard">
                 <button @click="activeTab = 'explore'" :class="activeTab === 'explore' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">🔍 Explore</button>
-                <button @click="clickPostTask()" :class="activeTab === 'post' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">➕ Post</button>
-                <button @click="activeTab = 'wallet'" :class="activeTab === 'wallet' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">🏦 Wallet</button>
+                <button @click="clickPostTask()" :class="activeTab === 'post' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">➕ Post Task</button>
+                <button @click="activeTab = 'wallet'" :class="activeTab === 'wallet' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">🏦 Wallet & Banks</button>
                 <button @click="activeTab = 'profile'" :class="activeTab === 'profile' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">👤 Alias Studio</button>
                 <button @click="activeTab = 'pulse'" :class="activeTab === 'pulse' ? 'bg-jobterBlack text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="px-3.5 py-1.5 rounded-xl shrink-0">⚡ Pulse</button>
             </div>
@@ -306,23 +349,23 @@
             <!-- =================================================== -->
             <section x-show="activeTab === 'explore'" class="space-y-6">
                 
-                <!-- Marketplace Hero Banner -->
+                <!-- Marketplace Hero Banner (Distinct Headline — Motto Never Repeated Here) -->
                 <div class="bg-white dark:bg-jobterDarkCard text-slate-900 dark:text-white rounded-3xl p-6 sm:p-8 shadow-premium border border-slate-200 dark:border-slate-800 relative overflow-hidden bg-grid-pattern">
                     <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                         <div class="space-y-2.5 max-w-2xl">
                             <div class="flex items-center gap-2 flex-wrap">
                                 <span class="bg-jobterBlue text-white text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full">
-                                    🇳🇬 Nigeria's Task & Opportunities Marketplace
+                                    🇳🇬 Nigerian Task & Opportunities Marketplace
                                 </span>
                                 <span class="bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800 text-[11px] font-mono font-bold px-3 py-1 rounded-full">
-                                    Demo Tasks Preview
+                                    Be Among the First to Join Jobter
                                 </span>
                             </div>
                             <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                                Hire Local. Work Local. Grow Together.
+                                Find Trusted Local Artisans, Campus Runners & Remote Pros Across Nigeria.
                             </h1>
                             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                                Browse sample demo tasks across Nigeria. Note: Jobter exclusively holds and releases escrow when the client approves completed work.
+                                Explore actionable sample tasks across all 36 States, FCT Abuja, and Remote. Click any task card to inspect the full workflow, negotiate your budget offer, and test how Jobter releases escrow upon client approval.
                             </p>
                         </div>
 
@@ -331,7 +374,7 @@
                                 + Post a Task
                             </button>
                             <button @click="activeTab = 'pulse'" class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-jobterBlack dark:text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-2xl transition border border-slate-200 dark:border-slate-700">
-                                Jobter Pulse™
+                                ⚡ Jobter Pulse™
                             </button>
                         </div>
                     </div>
@@ -341,7 +384,7 @@
                 <div class="bg-white dark:bg-jobterDarkCard rounded-3xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-premium space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
                         <div class="md:col-span-6 relative">
-                            <input type="text" x-model="searchQuery" placeholder="Search demo tasks by skill, title, or area (e.g. Inverter, Tailor, Lekki, Remote)..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl pl-4 pr-4 py-3 text-xs sm:text-sm text-jobterBlack dark:text-white placeholder-slate-400 focus:outline-none focus:border-jobterBlue font-medium transition">
+                            <input type="text" x-model="searchQuery" placeholder="Search tasks by skill, title, or area (e.g. Inverter, Tailor, Lekki, Remote, UNILAG)..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl pl-4 pr-4 py-3 text-xs sm:text-sm text-jobterBlack dark:text-white placeholder-slate-400 focus:outline-none focus:border-jobterBlue font-medium transition">
                         </div>
                         <div class="md:col-span-3">
                             <select x-model="selectedState" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl px-3.5 py-3 text-xs sm:text-sm font-bold text-jobterBlack dark:text-white focus:outline-none focus:border-jobterBlue transition">
@@ -371,15 +414,27 @@
                     </div>
                 </div>
 
+                <!-- Empty State when Search Matches Nothing -->
+                <template x-if="filteredTasks.length === 0">
+                    <div class="bg-white dark:bg-jobterDarkCard rounded-3xl p-10 text-center border border-slate-200 dark:border-slate-800 space-y-3">
+                        <div class="text-3xl">🔍</div>
+                        <h3 class="font-extrabold text-base text-jobterBlack dark:text-white">No tasks match your current filters</h3>
+                        <p class="text-xs text-slate-500 max-w-md mx-auto">Try clearing your search query or switching your state/category filter back to "All".</p>
+                        <button @click="searchQuery = ''; selectedState = 'All'; selectedCategory = 'All'" class="bg-jobterBlue text-white font-bold text-xs px-4 py-2.5 rounded-xl">Reset Filters</button>
+                    </div>
+                </template>
+
                 <!-- Task Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     <template x-for="task in filteredTasks" :key="task.id">
-                        <div class="bg-white dark:bg-jobterDarkCard rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-premium hover:shadow-card-hover hover:border-jobterBlue/60 transition-all duration-200 flex flex-col justify-between space-y-5 group">
+                        <div @click="clickClaimDemoTask(task)" class="cursor-pointer bg-white dark:bg-jobterDarkCard rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-premium hover:shadow-card-hover hover:border-jobterBlue/60 transition-all duration-200 flex flex-col justify-between space-y-5 group">
                             <div class="space-y-3.5">
                                 <div class="flex items-center justify-between gap-2">
                                     <div class="flex items-center gap-1.5 flex-wrap">
                                         <span class="text-[11px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-2.5 py-1 rounded-lg" x-text="task.state + ' • ' + task.location"></span>
-                                        <span class="text-[10px] font-mono font-bold bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-0.5 rounded-md">Demo Task</span>
+                                        <template x-if="task.isDemo">
+                                            <span class="text-[10px] font-mono font-bold bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-0.5 rounded-md">Demo</span>
+                                        </template>
                                         <template x-if="task.isRemote">
                                             <span class="text-[10px] font-mono font-bold bg-blue-50 dark:bg-blue-950 text-jobterBlue border border-blue-200 dark:border-blue-800 px-2 py-0.5 rounded-lg">Remote</span>
                                         </template>
@@ -409,8 +464,8 @@
                                     <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Task Budget</span>
                                     <span class="font-mono font-extrabold text-base sm:text-lg text-jobterBlack dark:text-white" x-text="formatRange(task.minPrice, task.maxPrice)"></span>
                                 </div>
-                                <button @click="clickClaimDemoTask(task)" class="bg-jobterBlack dark:bg-slate-800 group-hover:bg-jobterBlue text-white font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-xs">
-                                    View Full Task Details →
+                                <button @click.stop="clickClaimDemoTask(task)" class="bg-jobterBlack dark:bg-slate-800 group-hover:bg-jobterBlue text-white font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-xs">
+                                    Inspect & Accept →
                                 </button>
                             </div>
                         </div>
@@ -423,13 +478,29 @@
             <!-- =================================================== -->
             <section x-show="activeTab === 'post'" x-cloak class="max-w-2xl mx-auto">
                 <div class="bg-white dark:bg-jobterDarkCard rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-premium space-y-6">
-                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4 flex-wrap gap-2">
                         <div>
-                            <span class="text-[11px] font-mono font-bold uppercase text-jobterBlue">Jobter Escrow Protection</span>
+                            <span class="text-[11px] font-mono font-bold uppercase text-jobterBlue">Jobter Marketplace Listing</span>
                             <h2 class="text-2xl font-extrabold text-jobterBlack dark:text-white">Post a New Task</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Verification required before publishing live tasks.</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Define your deliverables, location, and budget range in Naira.</p>
                         </div>
+                        <span class="text-[11px] font-mono font-bold px-3 py-1 rounded-full"
+                              :class="userProfile.verificationStatus === 'Verified' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'"
+                              x-text="'KYC: ' + userProfile.verificationStatus"></span>
                     </div>
+
+                    <!-- Verification Gate Notice -->
+                    <template x-if="userProfile.verificationStatus !== 'Verified'">
+                        <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <div class="text-xs text-amber-900 dark:text-amber-200 space-y-0.5">
+                                <p class="font-extrabold">Identity Verification Required Before Publishing</p>
+                                <p class="text-[11px] opacity-90">Please complete your General Professional (NIN + Utility Bill) or Student ID verification in Alias Studio to publish live tasks.</p>
+                            </div>
+                            <button type="button" @click="activeTab = 'profile'" class="bg-amber-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl shrink-0">
+                                Go to Alias Studio →
+                            </button>
+                        </div>
+                    </template>
 
                     <form @submit.prevent="publishTask()" class="space-y-4">
                         <div>
@@ -474,7 +545,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Clear Deliverables & Requirements</label>
-                            <textarea required x-model="postForm.description" rows="3" placeholder="Specify tools required or exact deliverables..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3.5 text-xs sm:text-sm text-jobterBlack dark:text-white"></textarea>
+                            <textarea required x-model="postForm.description" rows="3" placeholder="Specify tools required, expected timeline, or exact deliverables..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3.5 text-xs sm:text-sm text-jobterBlack dark:text-white"></textarea>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
@@ -508,7 +579,7 @@
                             <div class="font-mono text-3xl font-extrabold mt-1" x-text="formatNaira(walletBalance)"></div>
                             <p class="text-[11px] text-slate-400 mt-1">Used to fund escrow when hiring workers.</p>
                         </div>
-                        <button @click="authPreviewModal = true" class="w-full bg-jobterBlue hover:bg-blue-600 text-white font-extrabold text-xs py-3 rounded-xl transition shadow-xs">
+                        <button @click="openFundWalletModal()" class="w-full bg-jobterBlue hover:bg-blue-600 text-white font-extrabold text-xs py-3 rounded-xl transition shadow-xs">
                             + Fund Wallet (Paystack / Transfer)
                         </button>
                     </div>
@@ -533,6 +604,7 @@
                                 <span class="px-2 py-0.5 rounded-md text-[10px]" :class="safeLockBalance >= minWithdrawal ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'" x-text="safeLockBalance >= minWithdrawal ? '✓ Ready for Payout' : 'Min ₦10k Payout'"></span>
                             </div>
                             <div class="font-mono text-3xl font-extrabold text-jobterBlack dark:text-white mt-1" x-text="formatNaira(safeLockBalance)"></div>
+                            <p class="text-[11px] text-slate-500 mt-1">Released escrow earnings ready for bank withdrawal.</p>
                         </div>
 
                         <button @click="withdrawSafeLock()" :disabled="safeLockBalance < minWithdrawal" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-3 rounded-xl transition disabled:opacity-40 disabled:cursor-not-allowed shadow-xs">
@@ -549,14 +621,17 @@
                                 <h3 class="text-base font-extrabold text-jobterBlack dark:text-white">Linked Nigerian Banks</h3>
                                 <p class="text-xs text-slate-500">Destination for instant NIP withdrawals.</p>
                             </div>
-                            <button @click="addBankModalOpen = true" class="bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-xs px-3.5 py-2 rounded-xl">
+                            <button @click="openAddBankModal()" class="bg-jobterBlue hover:bg-jobterBlueDark text-white font-bold text-xs px-3.5 py-2 rounded-xl">
                                 + Link Bank
                             </button>
                         </div>
 
                         <div class="space-y-2.5">
                             <template x-if="linkedBanks.length === 0">
-                                <p class="text-xs text-slate-400 py-4 text-center">No bank accounts linked yet.</p>
+                                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2">
+                                    <p class="text-xs text-slate-400">No bank accounts linked yet.</p>
+                                    <button @click="openAddBankModal()" class="text-xs font-extrabold text-jobterBlue hover:underline">+ Add Your Nigerian Bank Account</button>
+                                </div>
                             </template>
                             <template x-for="(acc, index) in linkedBanks" :key="acc.accountNumber">
                                 <div @click="selectedBankIndex = index"
@@ -581,13 +656,13 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <h3 class="text-base font-extrabold text-jobterBlack dark:text-white">Transaction Ledger</h3>
-                                <p class="text-xs text-slate-500">Real-time simulated log of funding, escrow releases, and bank payouts.</p>
+                                <p class="text-xs text-slate-500">Simulated activity log for wallet deposits, escrow locks, and bank payouts.</p>
                             </div>
                         </div>
 
                         <div class="space-y-2.5 max-h-80 overflow-y-auto pr-1">
                             <template x-if="transactions.length === 0">
-                                <p class="text-xs text-slate-400 py-8 text-center">No transactions recorded yet.</p>
+                                <p class="text-xs text-slate-400 py-8 text-center">No transactions recorded yet. Fund your wallet or complete a task to view activity.</p>
                             </template>
                             <template x-for="tx in transactions" :key="tx.id">
                                 <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
@@ -602,7 +677,7 @@
                                     </div>
                                     <span class="font-mono font-extrabold text-sm"
                                           :class="tx.type === 'credit' ? 'text-emerald-600 dark:text-emerald-400' : 'text-jobterBlack dark:text-white'"
-                                          x-text="(tx.type === 'credit' ? '+' : '') + formatNaira(tx.amount)"></span>
+                                          x-text="(tx.type === 'credit' ? '+' : '-') + formatNaira(tx.amount)"></span>
                                 </div>
                             </template>
                         </div>
@@ -618,17 +693,53 @@
                     <div class="flex items-center justify-between flex-wrap gap-3">
                         <div>
                             <h2 class="text-xl font-extrabold text-jobterBlack dark:text-white">Alias Studio & Identity Verification</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Configure your public handle, trade badge, and submit verification documents.</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Configure your public handle, trade badge, and submit verification credentials.</p>
                         </div>
                         <button @click="helpModalOpen = true" class="bg-jobterBlueLight dark:bg-blue-950 text-jobterBlue dark:text-blue-300 font-bold text-xs px-3.5 py-2 rounded-xl">
                             Help & FAQ
                         </button>
                     </div>
 
+                    <!-- Read-Only Verification Status Card -->
+                    <div class="p-4 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                         :class="{
+                            'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800': userProfile.verificationStatus === 'Not Verified',
+                            'bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800': userProfile.verificationStatus === 'Pending Review',
+                            'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800': userProfile.verificationStatus === 'Verified'
+                         }">
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-mono font-bold uppercase px-2.5 py-0.5 rounded-full"
+                                      :class="{
+                                        'bg-slate-200 text-slate-700': userProfile.verificationStatus === 'Not Verified',
+                                        'bg-amber-200 text-amber-900': userProfile.verificationStatus === 'Pending Review',
+                                        'bg-emerald-200 text-emerald-900': userProfile.verificationStatus === 'Verified'
+                                      }"
+                                      x-text="userProfile.verificationStatus"></span>
+                                <span class="text-xs font-extrabold text-jobterBlack dark:text-white"
+                                      x-text="userProfile.registered ? ('@' + userProfile.alias) : 'No Active Profile Yet'"></span>
+                            </div>
+                            <p class="text-[11px] text-slate-600 dark:text-slate-300"
+                               x-text="userProfile.verificationStatus === 'Verified' ? 'Your identity is verified. You can post tasks and accept opportunities across Jobter.' : (userProfile.verificationStatus === 'Pending Review' ? 'Your KYC documents have been submitted for review.' : 'Submit your verification credentials below to unlock task posting and payouts.')"></p>
+                        </div>
+
+                        <template x-if="userProfile.verificationStatus === 'Pending Review'">
+                            <button type="button" @click="simulateApproveVerification()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shrink-0 shadow-xs">
+                                ✓ Simulate Admin Approval (Demo)
+                            </button>
+                        </template>
+                    </div>
+
                     <form @submit.prevent="saveAliasProfile()" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Public Handle (Alias)</label>
-                            <input type="text" required x-model="userProfile.alias" placeholder="e.g. LagosPro_Chinedu" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono font-bold text-jobterBlack dark:text-white">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Legal Full Name</label>
+                                <input type="text" required x-model="userProfile.legalName" placeholder="Enter your legal full name" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-jobterBlack dark:text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Public Handle (Alias)</label>
+                                <input type="text" required x-model="userProfile.alias" placeholder="Pick your public alias" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono font-bold text-jobterBlack dark:text-white">
+                            </div>
                         </div>
 
                         <div>
@@ -643,50 +754,62 @@
                             </select>
                         </div>
 
+                        <!-- Verification Track Selector -->
                         <div class="p-4 rounded-2xl bg-blue-50/50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 space-y-3">
-                            <h3 class="font-extrabold text-xs text-blue-900 dark:text-blue-300 uppercase">Verification Track</h3>
+                            <h3 class="font-extrabold text-xs text-blue-900 dark:text-blue-300 uppercase">Identity Verification Track (KYC)</h3>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Status</label>
-                                <select x-model="userProfile.kycTrack" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold text-jobterBlack dark:text-white">
-                                    <option value="general">General Professional (NIN Number + NIN Image + Current Utility Bill)</option>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Track</label>
+                                <select x-model="userProfile.kycTrack" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-jobterBlack dark:text-white">
+                                    <option value="general">General Professional (11-Digit NIN + NIN Image + Current Utility Bill)</option>
                                     <option value="student">Student (University Name, Student ID Card Image, Student Email & Matric Number)</option>
                                 </select>
                             </div>
 
+                            <!-- Track 1: General Professional -->
                             <template x-if="userProfile.kycTrack === 'general'">
                                 <div class="space-y-3 pt-2">
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">11-Digit National Identification Number (NIN)</label>
-                                        <input type="text" maxlength="11" x-model="userProfile.nin" placeholder="e.g. 22109485712" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs font-mono font-bold text-jobterBlack dark:text-white">
+                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">11-Digit National Identification Number (NIN) *</label>
+                                        <input type="text" maxlength="11" pattern="[0-9]{11}" required x-model="userProfile.nin" placeholder="Enter your 11-digit NIN (e.g. 22109485712)" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono font-bold text-jobterBlack dark:text-white">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload NIN Image (National ID Card / Slip)</label>
-                                        <input type="file" accept="image/*" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs">
+                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload Image of NIN (National ID Card / Slip) *</label>
+                                        <input type="file" accept="image/*" @change="handleKycFile($event, 'ninImageName')" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs">
+                                        <template x-if="userProfile.ninImageName">
+                                            <span class="text-[11px] text-emerald-600 font-bold block mt-1" x-text="'✓ Attached: ' + userProfile.ninImageName"></span>
+                                        </template>
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload Current Utility Bill (Electricity / Water / Waste)</label>
-                                        <input type="file" accept="image/*,.pdf" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs">
+                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload Current Utility Bill (Electricity / Water / Waste) *</label>
+                                        <input type="file" accept="image/*,.pdf" @change="handleKycFile($event, 'utilityBillName')" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs">
+                                        <template x-if="userProfile.utilityBillName">
+                                            <span class="text-[11px] text-emerald-600 font-bold block mt-1" x-text="'✓ Attached: ' + userProfile.utilityBillName"></span>
+                                        </template>
                                     </div>
                                 </div>
                             </template>
 
+                            <!-- Track 2: Student -->
                             <template x-if="userProfile.kycTrack === 'student'">
                                 <div class="space-y-3 pt-2">
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">University / Institution Name</label>
-                                        <input type="text" x-model="userProfile.universityName" placeholder="e.g. University of Lagos (UNILAG)" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs font-medium">
+                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Name of University / Institution *</label>
+                                        <input type="text" required x-model="userProfile.universityName" placeholder="e.g. University of Lagos (UNILAG)" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-medium text-jobterBlack dark:text-white">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload Student ID Card Image</label>
-                                        <input type="file" accept="image/*" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs">
+                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload Student ID Card Image *</label>
+                                        <input type="file" accept="image/*" @change="handleKycFile($event, 'studentIdImageName')" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs">
+                                        <template x-if="userProfile.studentIdImageName">
+                                            <span class="text-[11px] text-emerald-600 font-bold block mt-1" x-text="'✓ Attached: ' + userProfile.studentIdImageName"></span>
+                                        </template>
                                     </div>
                                     <div>
                                         <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Student Email Address (Optional)</label>
-                                        <input type="email" x-model="userProfile.studentEmail" placeholder="e.g. student@unilag.edu.ng" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs font-mono">
+                                        <input type="email" x-model="userProfile.studentEmail" placeholder="e.g. student@live.unilag.edu.ng" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono text-jobterBlack dark:text-white">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Matriculation Number</label>
-                                        <input type="text" x-model="userProfile.matricNumber" placeholder="e.g. 190204051" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs font-mono">
+                                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Matriculation Number *</label>
+                                        <input type="text" required x-model="userProfile.matricNumber" placeholder="e.g. 190204051" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono text-jobterBlack dark:text-white">
                                     </div>
                                 </div>
                             </template>
@@ -694,11 +817,11 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Professional Bio & Skills</label>
-                            <textarea x-model="userProfile.bio" rows="3" placeholder="Tell clients about your expertise..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs text-jobterBlack dark:text-white"></textarea>
+                            <textarea x-model="userProfile.bio" rows="3" placeholder="Describe your trade skills, tools, or campus availability..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs text-jobterBlack dark:text-white"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full bg-jobterBlack dark:bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-xs py-3.5 rounded-xl transition">
-                            Save Alias Studio & Verification Changes
+                        <button type="submit" class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-xs sm:text-sm py-3.5 rounded-xl transition shadow-blue-glow">
+                            Submit Alias Studio & Verification Credentials →
                         </button>
                     </form>
                 </div>
@@ -713,7 +836,7 @@
                         <div>
                             <span class="text-xs font-mono font-bold text-blue-300 uppercase tracking-widest">Trust & Engagement System</span>
                             <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Jobter Pulse™</h2>
-                            <p class="text-xs sm:text-sm text-slate-300 mt-1">Level up your profile, track verified earnings goals, and unlock priority task matching.</p>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1">Build your verified reputation, complete weekly challenges, and unlock priority matching.</p>
                         </div>
                         <div class="bg-white/15 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/20 text-center">
                             <span class="text-[10px] font-mono uppercase text-slate-300 block">Trust Level</span>
@@ -740,7 +863,7 @@
                         <div class="space-y-3">
                             <template x-for="badge in pulseData.badges" :key="badge.id">
                                 <div class="flex items-center space-x-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-jobterBlue flex items-center justify-center shrink-0 font-bold">🛡️</div>
+                                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-jobterBlue flex items-center justify-center shrink-0 font-bold" x-text="badge.icon || '🛡️'"></div>
                                     <div>
                                         <span class="font-extrabold text-xs text-jobterBlack dark:text-white block" x-text="badge.title"></span>
                                         <span class="text-[10px] text-slate-500" x-text="badge.desc"></span>
@@ -760,30 +883,33 @@
                             <div class="space-y-1">
                                 <div class="flex justify-between text-[10px] font-mono text-slate-500">
                                     <span x-text="pulseData.weeklyChallenge.progress + ' / ' + pulseData.weeklyChallenge.goal + ' completed'"></span>
-                                    <span x-text="Math.round((pulseData.weeklyChallenge.progress / pulseData.weeklyChallenge.goal)*100) + '%'"></span>
+                                    <span x-text="Math.min(100, Math.round((pulseData.weeklyChallenge.progress / pulseData.weeklyChallenge.goal)*100)) + '%'"></span>
                                 </div>
                                 <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
-                                    <div class="bg-jobterBlue h-full" :style="'width: ' + Math.min(100, Math.round((pulseData.weeklyChallenge.progress / pulseData.weeklyChallenge.goal)*100)) + '%'"></div>
+                                    <div class="bg-jobterBlue h-full transition-all duration-300" :style="'width: ' + Math.min(100, Math.round((pulseData.weeklyChallenge.progress / pulseData.weeklyChallenge.goal)*100)) + '%'"></div>
                                 </div>
                             </div>
                         </div>
-                        <button @click="notify('Challenge Claimed!', '+250 XP added to your Jobter Pulse profile.', '⚡')" class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-jobterBlack dark:text-white font-bold text-xs py-3 rounded-xl transition">
-                            Claim Reward XP
+                        <button @click="claimChallengeXp()"
+                                :disabled="pulseData.weeklyChallenge.claimed"
+                                :class="pulseData.weeklyChallenge.claimed ? 'bg-emerald-100 text-emerald-800 cursor-not-allowed' : 'bg-jobterBlue hover:bg-jobterBlueDark text-white'"
+                                class="w-full font-bold text-xs py-3 rounded-xl transition">
+                            <span x-text="pulseData.weeklyChallenge.claimed ? '✓ +250 XP Claimed' : 'Claim +250 XP Reward'"></span>
                         </button>
                     </div>
 
                     <div class="bg-white dark:bg-jobterDarkCard rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-premium space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <h3 class="font-extrabold text-base text-jobterBlack dark:text-white">Monthly Goal</h3>
+                                <h3 class="font-extrabold text-base text-jobterBlack dark:text-white">Monthly Earnings Goal</h3>
                                 <span class="bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-[10px] px-2.5 py-1 rounded-full">Active</span>
                             </div>
                             <p class="text-xs text-slate-600 dark:text-slate-300">Target verified milestone: <strong>₦150,000</strong></p>
-                            <div class="font-mono text-xl font-extrabold text-jobterBlack dark:text-white" x-text="formatNaira(safeLockBalance + walletBalance)"></div>
-                            <p class="text-[10px] text-slate-500">Real verified earnings tracked via SafeLock™ and escrow releases.</p>
+                            <div class="font-mono text-xl font-extrabold text-jobterBlack dark:text-white" x-text="formatNaira(safeLockBalance)"></div>
+                            <p class="text-[10px] text-slate-500">Real verified earnings tracked via SafeLock™ and approved escrow releases.</p>
                         </div>
                         <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-200 dark:border-emerald-800 text-[11px] text-emerald-900 dark:text-emerald-300 font-medium">
-                            ✓ Hire Local. Work Local. Grow Together.
+                            ✓ Complete tasks and get approved by clients to reach your monthly goal.
                         </div>
                     </div>
                 </div>
@@ -824,20 +950,20 @@
                         </div>
                         <div>
                             <div class="flex items-center space-x-2">
-                                <h3 class="font-extrabold text-sm sm:text-base" x-text="messengerView === 'chat' ? ('@' + currentChat?.partnerAlias) : 'Jobter Professional Messenger'"></h3>
+                                <h3 class="font-extrabold text-sm sm:text-base" x-text="messengerView === 'chat' ? ('@' + currentChat?.partnerAlias) : 'Jobter Direct Messenger'"></h3>
                                 <template x-if="messengerView === 'chat' && currentChat">
                                     <span class="text-xs font-bold text-amber-400" x-text="'★ ' + currentChat?.partnerRating"></span>
                                 </template>
                             </div>
                             <span class="text-[11px] font-mono text-emerald-400 font-bold block"
-                                  x-text="messengerView === 'chat' ? (currentChat?.completed ? '✓ Approved & Released by Jobter' : '🔒 Escrow Held: ' + formatNaira(currentChat?.contractAmount || 0)) : 'Select a contact to start messaging'"></span>
+                                  x-text="messengerView === 'chat' ? (currentChat?.completed ? '✓ Approved & Released by Jobter' : '🔒 Escrow Held: ' + formatNaira(currentChat?.contractAmount || 0)) : 'Select a contact to view conversation'"></span>
                         </div>
                     </div>
 
                     <div class="flex items-center space-x-2">
                         <template x-if="messengerView === 'chat' && currentChat && !currentChat.completed">
                             <button @click="jobterReleaseEscrow()" class="bg-emerald-500 hover:bg-emerald-400 text-jobterBlack font-extrabold text-xs px-3.5 py-2 rounded-xl transition shadow-sm">
-                                ✓ Client Approved • Jobter Release Escrow
+                                ✓ Client Approved • Release Escrow
                             </button>
                         </template>
                         <button @click="messengerModalOpen = false" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white font-bold text-sm">✕</button>
@@ -847,7 +973,7 @@
                 <!-- Modal Body: Dual Pane -->
                 <div class="flex-1 grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                     
-                    <!-- Contacts Sidebar -->
+                    <!-- Contacts Sidebar (Shows First on Mobile) -->
                     <div :class="messengerView === 'contacts' ? 'block' : 'hidden md:block'" class="md:col-span-4 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex flex-col overflow-hidden">
                         <div class="p-3 border-b border-slate-200 dark:border-slate-800">
                             <input type="text" x-model="contactSearch" placeholder="Search contacts..." class="w-full bg-white dark:bg-jobterDarkCard border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-jobterBlack dark:text-white focus:outline-none focus:border-jobterBlue">
@@ -925,15 +1051,15 @@
                                 <div class="p-3.5 bg-white dark:bg-jobterDarkCard border-t border-slate-200 dark:border-slate-800 space-y-2.5 shrink-0">
                                     <div class="flex items-center gap-2">
                                         <label class="cursor-pointer bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-[11px] px-3 py-1.5 rounded-xl transition">
-                                            Photo Proof
+                                            📷 Photo Proof
                                             <input type="file" accept="image/*" class="hidden" @change="uploadChatPhoto($event)">
                                         </label>
                                         <button @click="sendVoiceNote()" class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-[11px] px-3 py-1.5 rounded-xl transition">
-                                            Voice Note
+                                            🎙️ Voice Note
                                         </button>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <input type="text" x-model="newChatMessage" @keydown.enter="sendChatMessage()" placeholder="Type update..." class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-xs sm:text-sm text-jobterBlack dark:text-white focus:outline-none focus:border-jobterBlue">
+                                        <input type="text" x-model="newChatMessage" @keydown.enter="sendChatMessage()" placeholder="Type message or task deliverable update..." class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-xs sm:text-sm text-jobterBlack dark:text-white focus:outline-none focus:border-jobterBlue">
                                         <button @click="sendChatMessage()" class="bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-xs px-5 py-3 rounded-xl transition shrink-0">
                                             Send →
                                         </button>
@@ -951,17 +1077,17 @@
         <div x-show="celebrationModalOpen" x-cloak class="fixed inset-0 z-50 bg-jobterBlack/80 backdrop-blur-md flex items-center justify-center p-4">
             <div class="bg-white dark:bg-jobterDarkCard rounded-3xl max-w-md w-full p-8 space-y-6 text-center shadow-2xl border border-emerald-500">
                 <div class="w-20 h-20 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-3xl mx-auto flex items-center justify-center text-4xl shadow-inner font-bold">
-                    ✓
+                    🎉
                 </div>
                 <div class="space-y-2">
                     <span class="text-xs font-mono font-bold uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full">First Job Milestone!</span>
                     <h3 class="font-extrabold text-2xl text-jobterBlack dark:text-white">Congratulations!</h3>
                     <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                        Your first task has been successfully completed and approved. Jobter has released escrow funds straight to your SafeLock™ Vault!
+                        Your first task has been approved by the client! Jobter has released the escrow funds straight to your SafeLock™ Vault and awarded you +100 Bonus XP.
                     </p>
                 </div>
-                <button @click="celebrationModalOpen = false" class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-sm py-4 rounded-2xl transition shadow-blue-glow">
-                    Awesome — View SafeLock Vault →
+                <button @click="celebrationModalOpen = false; activeTab = 'wallet'" class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-sm py-4 rounded-2xl transition shadow-blue-glow">
+                    Awesome — View SafeLock™ Vault →
                 </button>
             </div>
         </div>
@@ -969,61 +1095,133 @@
         <!-- POPULAR SIGN-IN & REGISTRATION MODAL -->
         <div x-show="authPreviewModal" x-cloak class="fixed inset-0 z-50 bg-jobterBlack/80 backdrop-blur-xs flex items-center justify-center p-4">
             <div @click.away="authPreviewModal = false" class="bg-white dark:bg-jobterDarkCard rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 dark:border-slate-800">
-                <div class="w-14 h-14 bg-jobterBlueLight dark:bg-blue-950 text-jobterBlue dark:text-blue-300 rounded-2xl mx-auto flex items-center justify-center text-2xl shadow-inner font-bold">
-                    🔐
-                </div>
-                <div class="text-center">
-                    <span class="text-[10px] font-mono font-bold uppercase bg-blue-100 dark:bg-blue-950 text-jobterBlue dark:text-blue-300 px-3 py-1 rounded-full">Secure Sign-In</span>
-                    <h3 class="font-extrabold text-xl text-jobterBlack dark:text-white mt-2">Welcome to Jobter</h3>
-                    <p class="text-xs text-slate-500 mt-1">Enter your legal full name and pick your public alias.</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-10 h-10 bg-white rounded-xl border border-slate-200 p-1 flex items-center justify-center overflow-hidden">
+                            <img src="1003820307.jpg" alt="Jobter" class="w-full h-full object-contain" onerror="this.style.display='none';">
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-lg text-jobterBlack dark:text-white leading-none" x-text="authMode === 'register' ? 'Create Your Jobter Account' : 'Sign In to Jobter'"></h3>
+                            <span class="text-[11px] text-slate-500">Frontend Authentication Session</span>
+                        </div>
+                    </div>
+                    <button @click="authPreviewModal = false" class="text-slate-400 hover:text-jobterBlack dark:hover:text-white font-bold">✕</button>
                 </div>
 
-                <form @submit.prevent="completeAuthPreview()" class="space-y-3.5 pt-2">
+                <!-- Mode Switch Tabs -->
+                <div class="grid grid-cols-2 bg-slate-100 dark:bg-slate-900 p-1 rounded-xl text-xs font-bold">
+                    <button type="button" @click="authMode = 'register'" :class="authMode === 'register' ? 'bg-white dark:bg-jobterDarkCard text-jobterBlack dark:text-white shadow-2xs' : 'text-slate-500'" class="py-2 rounded-lg transition">New Account</button>
+                    <button type="button" @click="authMode = 'signin'" :class="authMode === 'signin' ? 'bg-white dark:bg-jobterDarkCard text-jobterBlack dark:text-white shadow-2xs' : 'text-slate-500'" class="py-2 rounded-lg transition">Sign In</button>
+                </div>
+
+                <form @submit.prevent="completeAuthPreview()" class="space-y-3.5">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Legal Full Name</label>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Legal Full Name *</label>
                         <input type="text" required x-model="authForm.legalName" placeholder="e.g. Chinedu Emeka Okafor" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-jobterBlack dark:text-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Public Alias Handle</label>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Public Alias Handle *</label>
                         <input type="text" required x-model="authForm.alias" placeholder="e.g. LagosPro_Chinedu" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono font-bold text-jobterBlack dark:text-white">
                     </div>
-                    <button type="submit" class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-xs sm:text-sm py-3.5 rounded-xl transition shadow-blue-glow mt-2">
-                        Sign In / Register →
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Email or Nigerian Phone Number *</label>
+                        <input type="text" required x-model="authForm.emailOrPhone" placeholder="e.g. chinedu@email.com or 0803 000 0000" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-medium text-jobterBlack dark:text-white">
+                    </div>
+                    <button type="submit" class="w-full bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-xs sm:text-sm py-3.5 rounded-xl transition shadow-blue-glow mt-1">
+                        Continue to Jobter →
                     </button>
                 </form>
             </div>
         </div>
 
-        <!-- FULL DEMO TASK DETAIL MODAL -->
+        <!-- FUND WALLET MODAL (PAYSTACK / BANK TRANSFER SIMULATION) -->
+        <div x-show="fundWalletModalOpen" x-cloak class="fixed inset-0 z-50 bg-jobterBlack/80 backdrop-blur-xs flex items-center justify-center p-4">
+            <div @click.away="fundWalletModalOpen = false" class="bg-white dark:bg-jobterDarkCard rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 dark:border-slate-800">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono font-bold uppercase bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">Paystack / NIP Deposit</span>
+                        <h3 class="font-extrabold text-lg text-jobterBlack dark:text-white mt-1">Fund Your Spendable Wallet</h3>
+                    </div>
+                    <button @click="fundWalletModalOpen = false" class="text-slate-400 hover:text-jobterBlack dark:hover:text-white font-bold">✕</button>
+                </div>
+
+                <form @submit.prevent="submitFundWallet()" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Select Quick Amount (₦)</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" @click="fundAmount = 15000" :class="fundAmount === 15000 ? 'bg-jobterBlue text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="py-2 rounded-xl text-xs font-mono font-bold">₦15,000</button>
+                            <button type="button" @click="fundAmount = 50000" :class="fundAmount === 50000 ? 'bg-jobterBlue text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="py-2 rounded-xl text-xs font-mono font-bold">₦50,000</button>
+                            <button type="button" @click="fundAmount = 100000" :class="fundAmount === 100000 ? 'bg-jobterBlue text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'" class="py-2 rounded-xl text-xs font-mono font-bold">₦100,000</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Or Enter Custom Deposit Amount (₦)</label>
+                        <input type="number" min="1000" step="500" required x-model.number="fundAmount" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-mono font-extrabold text-jobterBlack dark:text-white">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Payment Channel</label>
+                        <select x-model="fundMethod" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-jobterBlack dark:text-white">
+                            <option value="Paystack Card / Bank Transfer">Paystack Instant Checkout (Card / Bank Transfer / USSD)</option>
+                            <option value="Dedicated Virtual Account (NIP)">Dedicated Virtual Bank Account Transfer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm py-3.5 rounded-xl transition shadow-xs">
+                        Confirm Deposit of <span x-text="formatNaira(fundAmount)"></span> →
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- FULL DEMO TASK DETAIL & NEGOTIATION MODAL -->
         <div x-show="claimModalOpen" x-cloak class="fixed inset-0 z-50 bg-jobterBlack/80 backdrop-blur-xs flex items-center justify-center p-4">
             <div @click.away="claimModalOpen = false" class="bg-white dark:bg-jobterDarkCard rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 dark:border-slate-800">
                 <div class="flex items-start justify-between gap-2">
                     <div>
-                        <span class="text-[10px] font-bold uppercase bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 px-2.5 py-1 rounded-md">Demo Task Full Process</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[10px] font-bold uppercase bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 px-2.5 py-1 rounded-md" x-text="claimingTask?.isDemo ? 'Demo Task • Full Workflow' : 'Live Marketplace Task'"></span>
+                            <span class="text-[10px] font-bold bg-jobterBlueLight text-jobterBlue px-2.5 py-1 rounded-md" x-text="claimingTask?.category"></span>
+                        </div>
                         <h3 class="font-extrabold text-lg sm:text-xl text-jobterBlack dark:text-white mt-2 leading-snug" x-text="claimingTask?.title"></h3>
-                        <p class="text-xs text-slate-500 mt-1" x-text="claimingTask?.state + ' • ' + claimingTask?.location"></p>
+                        <p class="text-xs text-slate-500 mt-1" x-text="claimingTask?.state + ' • ' + claimingTask?.location + ' • Posted ' + claimingTask?.postedTime"></p>
                     </div>
                     <button @click="claimModalOpen = false" class="text-slate-400 hover:text-jobterBlack dark:hover:text-white font-bold text-base">✕</button>
                 </div>
 
                 <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800" x-text="claimingTask?.description"></p>
 
+                <!-- Interactive Offer Slider -->
                 <div class="space-y-3 bg-blue-50/50 dark:bg-blue-950/30 p-4 rounded-2xl border border-blue-200 dark:border-blue-800 text-xs">
                     <div class="flex justify-between items-center font-bold">
                         <span class="text-slate-700 dark:text-slate-300">Task Poster:</span>
-                        <span class="text-jobterBlue" x-text="'@' + claimingTask?.posterAlias + ' (★ ' + claimingTask?.posterRating + ' (' + claimingTask?.posterRatingCount + '))'"></span>
+                        <span class="text-jobterBlue" x-text="'@' + claimingTask?.posterAlias + ' (★ ' + claimingTask?.posterRating + ' • ' + claimingTask?.posterRatingCount + ' reviews)'"></span>
                     </div>
                     <div class="flex justify-between items-center font-bold">
-                        <span class="text-slate-700 dark:text-slate-300">Budget Range:</span>
-                        <span class="font-mono text-jobterBlue font-extrabold" x-text="formatRange(claimingTask?.minPrice, claimingTask?.maxPrice)"></span>
+                        <span class="text-slate-700 dark:text-slate-300">Client Budget Range:</span>
+                        <span class="font-mono text-slate-700 dark:text-slate-300" x-text="formatRange(claimingTask?.minPrice, claimingTask?.maxPrice)"></span>
                     </div>
-                    <p class="text-[11px] text-slate-500 leading-relaxed">Workflow: Poster deposits funds into Jobter Escrow → Worker completes task & uploads photo proof → Poster inspects & approves → Jobter releases payment to SafeLock™.</p>
+                    <div class="pt-2 border-t border-blue-200/60 dark:border-blue-800/60 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-extrabold text-jobterBlack dark:text-white">Your Proposed Offer:</span>
+                            <span class="font-mono text-base font-extrabold text-jobterBlue" x-text="formatNaira(chosenOffer)"></span>
+                        </div>
+                        <input type="range" class="jobter-range"
+                               :min="claimingTask?.minPrice || 5000"
+                               :max="claimingTask?.maxPrice || 100000"
+                               step="1000"
+                               x-model.number="chosenOffer">
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed pt-1">
+                        <strong>How Jobter Works:</strong> 1. Client locks <span class="font-mono font-bold" x-text="formatNaira(chosenOffer)"></span> in Jobter Escrow → 2. You complete the task & upload proof in chat → 3. Client approves work → 4. Jobter releases payment to your SafeLock™ Vault.
+                    </p>
                 </div>
 
-                <div class="flex gap-3 pt-2">
+                <div class="flex gap-3 pt-1">
                     <button @click="claimModalOpen = false" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs py-3.5 rounded-2xl">Close</button>
-                    <button @click="claimModalOpen = false; openProfessionalMessenger()" class="flex-1 bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-xs py-3.5 rounded-xl transition shadow-blue-glow">
-                        Open Chat & Accept Task →
+                    <button @click="acceptTaskFromModal()" class="flex-1 bg-jobterBlue hover:bg-jobterBlueDark text-white font-extrabold text-xs py-3.5 rounded-2xl transition shadow-blue-glow">
+                        Accept Task & Open Chat →
                     </button>
                 </div>
             </div>
@@ -1040,18 +1238,20 @@
                             <option value="Guaranty Trust Bank (GTBank)">Guaranty Trust Bank (GTBank)</option>
                             <option value="Zenith Bank">Zenith Bank</option>
                             <option value="Access Bank">Access Bank</option>
+                            <option value="United Bank for Africa (UBA)">United Bank for Africa (UBA)</option>
+                            <option value="First Bank of Nigeria">First Bank of Nigeria</option>
                             <option value="OPay Digital Services">OPay Digital Services</option>
                             <option value="Moniepoint MFB">Moniepoint MFB</option>
                             <option value="Kuda Microfinance Bank">Kuda Microfinance Bank</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">10-Digit Account Number</label>
-                        <input type="text" maxlength="10" required x-model="newBank.accountNumber" placeholder="0123456789" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono font-bold text-jobterBlack dark:text-white">
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">10-Digit NUBAN Account Number</label>
+                        <input type="text" maxlength="10" pattern="[0-9]{10}" required x-model="newBank.accountNumber" placeholder="0123456789" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-mono font-bold text-jobterBlack dark:text-white">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Verified Account Name</label>
-                        <input type="text" required x-model="newBank.accountName" placeholder="e.g. CHINEDU OKECHUKWU" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold uppercase text-jobterBlack dark:text-white">
+                        <input type="text" required x-model="newBank.accountName" placeholder="e.g. CHINEDU EMEKA OKAFOR" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold uppercase text-jobterBlack dark:text-white">
                     </div>
                     <div class="flex gap-2 pt-2">
                         <button type="button" @click="addBankModalOpen = false" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs py-3 rounded-xl">Cancel</button>
@@ -1061,35 +1261,33 @@
             </div>
         </div>
 
-        <!-- HELP & EXPANDED FAQ MODAL -->
+        <!-- HELP & EXPANDED FAQ MODAL (18 Comprehensive Q&As) -->
         <div x-show="helpModalOpen" x-cloak class="fixed inset-0 z-50 bg-jobterBlack/80 backdrop-blur-xs flex items-center justify-center p-4">
             <div @click.away="helpModalOpen = false" class="bg-white dark:bg-jobterDarkCard rounded-3xl max-w-3xl w-full h-[90vh] sm:h-[680px] p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden">
                 <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4 shrink-0">
                     <div>
-                        <span class="text-[10px] font-mono font-bold uppercase bg-blue-100 dark:bg-blue-950 text-jobterBlue dark:text-blue-300 px-3 py-1 rounded-full">Support Center</span>
-                        <h2 class="text-xl font-extrabold text-jobterBlack dark:text-white mt-1">Help & Expandable FAQ</h2>
+                        <span class="text-[10px] font-mono font-bold uppercase bg-blue-100 dark:bg-blue-950 text-jobterBlue dark:text-blue-300 px-3 py-1 rounded-full">Support & Guidelines</span>
+                        <h2 class="text-xl font-extrabold text-jobterBlack dark:text-white mt-1">Help & Frequently Asked Questions</h2>
                     </div>
                     <button @click="helpModalOpen = false" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-700 flex items-center justify-center font-bold text-sm text-jobterBlack dark:text-white">✕</button>
                 </div>
 
                 <div class="shrink-0">
-                    <input type="text" x-model="faqSearch" placeholder="Search questions (e.g. escrow, withdrawal, KYC, remote)..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-xs sm:text-sm text-jobterBlack dark:text-white focus:outline-none focus:border-jobterBlue">
+                    <input type="text" x-model="faqSearch" placeholder="Search questions (e.g. escrow, NIN, student ID, withdrawal, dispute, remote)..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-xs sm:text-sm text-jobterBlack dark:text-white focus:outline-none focus:border-jobterBlue">
                 </div>
 
-                <div class="flex-1 overflow-y-auto space-y-4 pr-1">
+                <div class="flex-1 overflow-y-auto space-y-5 pr-1">
                     <template x-for="(catGroup, gIndex) in filteredFaqCategories" :key="gIndex">
-                        <div class="space-y-2">
+                        <div class="space-y-2.5">
                             <h3 class="text-xs font-mono font-extrabold text-jobterBlue uppercase tracking-wider px-1" x-text="catGroup.category"></h3>
                             <div class="space-y-2">
-                                <template x-for="(item, iIndex) in catGroup.items" :key="iIndex">
+                                <template x-for="item in catGroup.items" :key="item.id">
                                     <div class="border border-slate-200 dark:border-slate-800 rounded-2xl bg-slate-50/60 dark:bg-slate-900/60 overflow-hidden transition">
-                                        <button @click="item.open = !item.open" class="w-full text-left p-4 flex items-center justify-between text-xs sm:text-sm font-extrabold text-jobterBlack dark:text-white">
+                                        <button type="button" @click="toggleFaq(item.id)" class="w-full text-left p-4 flex items-center justify-between text-xs sm:text-sm font-extrabold text-jobterBlack dark:text-white">
                                             <span x-text="item.q"></span>
-                                            <span class="text-slate-400 font-bold text-base" x-text="item.open ? '−' : '+'"></span>
+                                            <span class="text-jobterBlue font-bold text-base ml-2 shrink-0" x-text="isFaqOpen(item.id) ? '−' : '+'"></span>
                                         </button>
-                                        <template x-if="item.open">
-                                            <div class="px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-800 pt-3 bg-white dark:bg-jobterDarkCard" x-text="item.a"></div>
-                                        </template>
+                                        <div x-show="isFaqOpen(item.id)" class="px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-800 pt-3 bg-white dark:bg-jobterDarkCard" x-text="item.a"></div>
                                     </div>
                                 </template>
                             </div>
@@ -1114,32 +1312,47 @@
                 messengerModalOpen: false,
                 messengerView: 'contacts',
                 authPreviewModal: false,
+                authMode: 'register',
+                pendingAction: null,
+                fundWalletModalOpen: false,
+                fundAmount: 50000,
+                fundMethod: 'Paystack Card / Bank Transfer',
                 addBankModalOpen: false,
                 claimModalOpen: false,
                 helpModalOpen: false,
                 celebrationModalOpen: false,
+                firstJobCelebrated: false,
                 claimingTask: null,
+                chosenOffer: 45000,
                 contactSearch: '',
                 faqSearch: '',
+                openFaqIds: [101, 401, 501],
                 sortBy: 'newest',
                 selectedBankIndex: 0,
 
+                // Starts empty as requested for launch (until user signs in)
                 userProfile: {
                     registered: false,
+                    verificationStatus: 'Not Verified',
                     legalName: '',
-                    alias: 'LagosPro_Chinedu',
+                    alias: '',
+                    emailOrPhone: '',
                     avatar: '🔧',
                     kycTrack: 'general',
                     nin: '',
+                    ninImageName: '',
+                    utilityBillName: '',
                     universityName: '',
+                    studentIdImageName: '',
                     studentEmail: '',
                     matricNumber: '',
-                    bio: 'Certified inverter & generator engineer, plumbing specialist, and project runner in Lagos.'
+                    bio: ''
                 },
 
                 authForm: {
                     legalName: '',
-                    alias: ''
+                    alias: '',
+                    emailOrPhone: ''
                 },
 
                 walletBalance: 0,
@@ -1148,7 +1361,7 @@
                 minWithdrawal: 10000,
                 toasts: [],
                 notifications: [
-                    { id: 1, title: 'Welcome to Jobter!', message: 'Hire Local. Work Local. Grow Together.', time: 'Just now' }
+                    { id: 1, title: 'Welcome to Jobter Nigeria', message: 'Browse demo tasks or sign in to set up your Alias Studio profile.', time: 'Just now' }
                 ],
                 searchQuery: '',
                 selectedState: 'All',
@@ -1175,13 +1388,16 @@
                     'Campus Student Gigs'
                 ],
 
+                // Realistic, Doable Nigerian Tasks Tagged with Demo
                 tasks: [
-                    { id: 501, title: '[Demo Task] Service 5kVA Luminous Inverter & Replace 2 Tubular Batteries', description: 'Inverter beeping low voltage in Lekki Phase 1. Need technician with digital multimeter.', state: 'Lagos', location: 'Lekki Phase 1', category: 'Inverter & Generator', posterAlias: 'LekkiTechBro', posterRating: 4.9, posterRatingCount: 94, campusOnly: false, isRemote: false, postedTime: '10 mins ago', minPrice: 45000, maxPrice: 85000, isDemo: true },
-                    { id: 502, title: '[Demo Task] Remote Full-Stack Developer for Paystack & Monnify Webhook Fix', description: 'Debug signature verification on our Node.js + React wallet settlement service.', state: 'Remote', location: 'Remote Work', category: 'Remote', posterAlias: 'FinTechFounder_NG', posterRating: 5.0, posterRatingCount: 210, campusOnly: false, isRemote: true, postedTime: '28 mins ago', minPrice: 150000, maxPrice: 280000, isDemo: true },
-                    { id: 503, title: '[Demo Task] Bespoke Tailor for Groom & Groomsmen Senator + Agbada Sets', description: 'Premium cashmere fabric already bought. Need clean embroidery and delivery before Friday.', state: 'Oyo', location: 'Bodija, Ibadan', category: 'Tailoring & Fashion', posterAlias: 'IbadanGroom_26', posterRating: 4.8, posterRatingCount: 68, campusOnly: false, isRemote: false, postedTime: '1 hour ago', minPrice: 85000, maxPrice: 165000, isDemo: true },
-                    { id: 504, title: '[Demo Task] Build & Mount Custom Wooden Floating TV Console + LED', description: 'HDF & walnut boards on site in Maitama. Bring circular saw and anchors.', state: 'FCT Abuja', location: 'Maitama', category: 'Carpentry & Interiors', posterAlias: 'AbujaHomeOwner', posterRating: 4.9, posterRatingCount: 115, campusOnly: false, isRemote: false, postedTime: '2 hours ago', minPrice: 95000, maxPrice: 180000, isDemo: true },
-                    { id: 505, title: '[Demo Task] Print, Hard-Bind & Submit 4 Final Year Thesis Copies at UNILAG', description: 'Print colour charts on 100gsm paper, gold-letter hard bind, and submit to Faculty.', state: 'Lagos', location: 'UNILAG Akoka', category: 'Campus Student Gigs', posterAlias: 'UNILAG_Rep', posterRating: 4.7, posterRatingCount: 42, campusOnly: true, isRemote: false, postedTime: '7 hours ago', minPrice: 18000, maxPrice: 32000, isDemo: true },
-                    { id: 506, title: '[Demo Task] Deep Clean 3-Bedroom Apartment in Wuse II Before Move-In', description: 'Scrub tiles, clean windows, sanitize bathrooms and kitchen cabinets.', state: 'FCT Abuja', location: 'Wuse II', category: 'Inverter & Generator', posterAlias: 'AbujaTenant_01', posterRating: 4.8, posterRatingCount: 53, campusOnly: false, isRemote: false, postedTime: '3 hours ago', minPrice: 30000, maxPrice: 50000, isDemo: true }
+                    { id: 501, title: 'Service 5kVA Luminous Inverter & Replace 2 Tubular Batteries', description: 'Inverter is showing overload warning in Lekki Phase 1. Need an experienced technician with a digital multimeter and crimping tool to replace 2 tubular batteries and test solar charge controller.', state: 'Lagos', location: 'Lekki Phase 1', category: 'Inverter & Generator', posterAlias: 'LekkiTechBro', posterRating: 4.9, posterRatingCount: 94, campusOnly: false, isRemote: false, postedTime: '10 mins ago', minPrice: 45000, maxPrice: 85000, isDemo: true },
+                    { id: 502, title: 'Full-Stack Developer for Paystack & Monnify Webhook Integration', description: 'Debug signature verification on our Node.js + React wallet settlement service and ensure idempotent transaction logging.', state: 'Remote', location: 'Remote Work', category: 'Remote', posterAlias: 'FinTechFounder_NG', posterRating: 5.0, posterRatingCount: 210, campusOnly: false, isRemote: true, postedTime: '28 mins ago', minPrice: 150000, maxPrice: 280000, isDemo: true },
+                    { id: 503, title: 'Bespoke Tailor for Groom & Groomsmen Senator + Agbada Sets', description: 'Premium cashmere fabric already purchased. Need clean embroidery, accurate measurements, and delivery in Bodija before Friday.', state: 'Oyo', location: 'Bodija, Ibadan', category: 'Tailoring & Fashion', posterAlias: 'IbadanGroom_26', posterRating: 4.8, posterRatingCount: 68, campusOnly: false, isRemote: false, postedTime: '1 hour ago', minPrice: 85000, maxPrice: 165000, isDemo: true },
+                    { id: 504, title: 'Build & Mount Custom Wooden Floating TV Console + Warm LED', description: 'HDF & walnut boards are on site in Maitama. Bring circular saw, cordless drill, spirit level, and heavy-duty wall anchors.', state: 'FCT Abuja', location: 'Maitama', category: 'Carpentry & Interiors', posterAlias: 'AbujaHomeOwner', posterRating: 4.9, posterRatingCount: 115, campusOnly: false, isRemote: false, postedTime: '2 hours ago', minPrice: 95000, maxPrice: 180000, isDemo: true },
+                    { id: 505, title: 'Print, Hard-Bind & Submit 4 Final Year Thesis Copies at UNILAG', description: 'Print colour charts on 100gsm paper, complete gold-letter hard binding at Senate Building, and submit to Faculty of Engineering.', state: 'Lagos', location: 'UNILAG Akoka', category: 'Campus Student Gigs', posterAlias: 'UNILAG_Rep', posterRating: 4.7, posterRatingCount: 42, campusOnly: true, isRemote: false, postedTime: '3 hours ago', minPrice: 18000, maxPrice: 32000, isDemo: true },
+                    { id: 506, title: 'Fix Concealed Bathroom Mixer Pipe Leak & Install Water Heater', description: 'Master bathroom pressure is dropping and 30L Ariston water heater needs mounting with new flexible connectors in Ikeja GRA.', state: 'Lagos', location: 'Ikeja GRA', category: 'Plumbing & Pipefitting', posterAlias: 'IslandClient_VI', posterRating: 4.9, posterRatingCount: 77, campusOnly: false, isRemote: false, postedTime: '4 hours ago', minPrice: 30000, maxPrice: 55000, isDemo: true },
+                    { id: 507, title: 'Small Chops & Smoky Party Jollof Catering for 50 Guests', description: 'Prepare and package 50 platters of smoky firewood-style Jollof rice,peppered turkey, and samosa/spring rolls for an anniversary in GRA.', state: 'Rivers', location: 'New GRA, Port Harcourt', category: 'Cooking & Event Catering', posterAlias: 'PH_EventPlanner', posterRating: 4.9, posterRatingCount: 83, campusOnly: false, isRemote: false, postedTime: '5 hours ago', minPrice: 120000, maxPrice: 210000, isDemo: true },
+                    { id: 508, title: 'Executive Chauffeur for Full-Day Corporate Meetings on the Island', description: 'Drive a 2022 Toyota Prado for executive pickups between Victoria Island, Ikoyi, and Eko Atlantic. Valid Nigerian driver license required.', state: 'Lagos', location: 'Victoria Island', category: 'Driving & Chauffeur', posterAlias: 'VICorpExec', posterRating: 4.8, posterRatingCount: 51, campusOnly: false, isRemote: false, postedTime: '6 hours ago', minPrice: 35000, maxPrice: 65000, isDemo: true }
                 ],
 
                 postForm: {
@@ -1205,13 +1421,14 @@
                     xp: 50,
                     nextLevelXp: 200,
                     badges: [
-                        { id: 1, title: 'Verified Member', desc: 'Active on Jobter' },
-                        { id: 2, title: 'Newcomer', desc: 'Exploring platform' }
+                        { id: 1, icon: '🛡️', title: 'Early Explorer', desc: 'Joined Jobter Launch Preview' },
+                        { id: 2, icon: '⚡', title: 'Fast Responder', desc: 'Ready for local opportunities' }
                     ],
                     weeklyChallenge: {
-                        title: 'Complete your first verified micro-task to earn 250 XP.',
+                        title: 'Complete your first client-approved task to unlock +250 XP.',
                         progress: 0,
-                        goal: 1
+                        goal: 1,
+                        claimed: false
                     }
                 },
 
@@ -1227,12 +1444,29 @@
                         completed: false,
                         time: '12:42 PM',
                         contractAmount: 45000,
-                        lastMsg: 'Pipe pressure is solid! Click complete so Jobter releases funds.',
+                        lastMsg: 'Pipe pressure is solid! Click approve so Jobter releases funds.',
                         messages: [
                             { sender: 'them', type: 'text', text: 'Good afternoon, are you on your way to Ikeja GRA?', time: '12:10 PM' },
-                            { sender: 'me', type: 'text', text: 'Yes boss, bringing the replacement mixer valve too.', time: '12:14 PM' },
+                            { sender: 'me', type: 'text', text: 'Yes boss, bringing the replacement Ariston mixer valve too.', time: '12:14 PM' },
                             { sender: 'them', type: 'vn', time: '12:30 PM' },
-                            { sender: 'them', type: 'text', text: 'Pipe pressure is solid now! Click complete so Jobter releases funds.', time: '12:42 PM' }
+                            { sender: 'them', type: 'text', text: 'Pipe pressure is solid now! Click the green release button at the top so Jobter releases your escrow.', time: '12:42 PM' }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        partnerAlias: 'FinTechFounder_NG',
+                        partnerAvatar: '💻',
+                        partnerRating: 5.0,
+                        role: 'Remote Client • Lagos',
+                        online: true,
+                        completed: false,
+                        time: '11:15 AM',
+                        contractAmount: 185000,
+                        lastMsg: 'Webhook PR looks clean. Ready to approve milestone.',
+                        messages: [
+                            { sender: 'them', type: 'text', text: 'Hi! Have you pushed the Paystack HMAC signature fix to staging?', time: '11:02 AM' },
+                            { sender: 'me', type: 'text', text: 'Yes, all webhook retries pass with 200 OK now.', time: '11:10 AM' },
+                            { sender: 'them', type: 'text', text: 'Webhook PR looks clean. Ready to approve milestone.', time: '11:15 AM' }
                         ]
                     }
                 ],
@@ -1240,33 +1474,57 @@
 
                 faqCategories: [
                     {
-                        category: 'Getting Started & Overview',
+                        category: '1. Getting Started',
                         items: [
-                            { q: 'What is Jobter?', a: 'Jobter is Nigeria’s premier micro-task and local opportunities marketplace connecting vetted artisans, remote professionals, and campus runners with real task posters.', open: false },
-                            { q: 'Are these current marketplace jobs real?', a: 'Listings tagged with [Demo Task] are sample opportunities to showcase the platform.', open: false },
-                            { q: 'Is registration free?', a: 'Yes! Signing up, creating an alias, and browsing tasks on Jobter is 100% free.', open: false }
+                            { id: 101, q: 'What is Jobter?', a: 'Jobter is Nigeria’s premier micro-task and local opportunities marketplace connecting verified artisans, remote professionals, and university campus runners with real task posters across all 36 States and FCT Abuja.' },
+                            { id: 102, q: 'What do the [Demo] tags on tasks mean?', a: 'Tasks tagged with [Demo] are realistic sample listings pre-populated for launch so you can inspect the full task workflow, test budget negotiation, and experience how Jobter escrow works.' },
+                            { id: 103, q: 'Is signing up on Jobter free?', a: 'Yes! Creating your account, configuring your public alias in Alias Studio, and browsing tasks are 100% free.' }
                         ]
                     },
                     {
-                        category: 'Escrow & SafeLock™',
+                        category: '2. Finding Work & Remote Opportunities',
                         items: [
-                            { q: 'Who releases escrow funds?', a: 'Jobter is the sole administrator that releases locked escrow funds to the jobber’s SafeLock™ Vault immediately after the client approves completed work.', open: false },
-                            { q: 'What is the minimum withdrawal limit?', a: 'Earnings in your SafeLock™ Vault can be withdrawn directly to your linked Nigerian bank account instantly once you reach the minimum threshold of ₦10,000.', open: false },
-                            { q: 'How are funds secured?', a: 'All funds are held in secure escrow bank accounts until both parties confirm satisfactory completion.', open: false }
+                            { id: 201, q: 'How do I accept a task and negotiate my rate?', a: 'Click on any task card to open the full task inspection modal. Use the interactive budget slider to pick your proposed fee within the client’s budget range, then click "Accept Task & Open Chat".' },
+                            { id: 202, q: 'What does the "Remote" tag mean?', a: 'Tasks labeled "Remote" can be completed from anywhere in Nigeria (such as software development, graphic design, copywriting, or virtual assistance) without physical travel.' },
+                            { id: 203, q: 'Who can accept Campus Student Gigs?', a: 'Tasks marked with the "Campus" badge are tailored for verified university and polytechnic students running errands inside their campus.' }
                         ]
                     },
                     {
-                        category: 'Verification & Safety',
+                        category: '3. Posting Tasks',
                         items: [
-                            { q: 'What do general professionals provide for verification?', a: 'General professionals are required to provide their 11-digit NIN, an image of their NIN, and a current utility bill.', open: false },
-                            { q: 'What do students provide for verification?', a: 'Students are required to provide their university name, student ID card image, student email (optional), and matriculation number.', open: false },
-                            { q: 'What happens in case of a dispute?', a: 'Jobter support reviews chat history, photo proofs, and deliverables before resolving and releasing funds.', open: false }
+                            { id: 301, q: 'Why do I need verification before posting a live task?', a: 'To keep the Nigerian marketplace safe from spam or fraudulent listings, every task poster must complete identity verification in Alias Studio before publishing live tasks.' },
+                            { id: 302, q: 'How do I set a fair budget for my task?', a: 'When posting a task, you specify a minimum and maximum Naira budget (e.g., ₦35,000 – ₦75,000) so skilled workers can propose an exact rate based on complexity.' },
+                            { id: 303, q: 'Can I upload or request photo proof of work?', a: 'Yes. Inside the Jobter Direct Messenger, workers can upload live photo proofs and send voice notes before you approve the completed task.' }
+                        ]
+                    },
+                    {
+                        category: '4. Payments, Escrow & SafeLock™',
+                        items: [
+                            { id: 401, q: 'Who releases escrow funds to the worker?', a: 'Jobter is the sole administrator that releases locked escrow funds to the worker’s SafeLock™ Vault immediately after the client marks the task as approved.' },
+                            { id: 402, q: 'What is the minimum withdrawal amount?', a: 'You can withdraw your verified earnings from your SafeLock™ Vault directly to your linked Nigerian bank account via NIP once your balance reaches ₦10,000.' },
+                            { id: 403, q: 'How do I fund my Spendable Wallet?', a: 'Go to the "Wallet & Banks" tab and click "+ Fund Wallet" to deposit funds via Paystack (Card, USSD, or Bank Transfer) or a dedicated virtual bank account.' }
+                        ]
+                    },
+                    {
+                        category: '5. Identity Verification (KYC)',
+                        items: [
+                            { id: 501, q: 'What documents are required for General Professionals?', a: 'General professionals must provide their 11-digit National Identification Number (NIN), an uploaded image of their NIN slip/card, and a current utility bill (electricity, water, or waste).' },
+                            { id: 502, q: 'What documents are required for Students?', a: 'University and polytechnic students must provide the name of their university, an uploaded image of their Student ID card, their student email address (optional), and their matriculation number.' },
+                            { id: 503, q: 'Why does Jobter use public aliases?', a: 'Your public alias (e.g., @LagosPro_Chinedu) protects your privacy on the public feed while your legal name and KYC credentials remain securely verified on file.' }
+                        ]
+                    },
+                    {
+                        category: '6. Safety, Ratings & Disputes',
+                        items: [
+                            { id: 601, q: 'How do ratings work for taskers and jobbers?', a: 'Every poster and worker displays their verified star rating and review count (e.g., ★ 4.9 (94)) earned from completed escrow contracts.' },
+                            { id: 602, q: 'What happens if there is a dispute over deliverables?', a: 'If a disagreement arises, funds remain safely locked in Jobter Escrow while our dispute resolution team reviews the chat thread, voice notes, and uploaded photo proofs.' },
+                            { id: 603, q: 'What is Jobter Pulse™?', a: 'Jobter Pulse™ rewards reliable workers and clients with Trust XP, level upgrades, and milestone badges based on real completed tasks.' }
                         ]
                     }
                 ],
 
                 initApp() {
-                    this.notify('Jobter Marketplace Ready', 'Hire Local. Work Local. Grow Together.', '🇳🇬');
+                    this.notify('Jobter Marketplace Ready', 'Explore realistic Nigerian tasks or sign in to get started.', '🇳🇬');
                 },
 
                 enterMarketplace() {
@@ -1283,14 +1541,27 @@
                     return `${this.formatNaira(min)} – ${this.formatNaira(max)}`;
                 },
 
+                isFaqOpen(id) {
+                    return this.openFaqIds.includes(id);
+                },
+
+                toggleFaq(id) {
+                    if (this.openFaqIds.includes(id)) {
+                        this.openFaqIds = this.openFaqIds.filter(x => x !== id);
+                    } else {
+                        this.openFaqIds.push(id);
+                    }
+                },
+
                 get filteredTasks() {
                     let list = this.tasks.filter(t => {
-                        const stateMatch = this.selectedState === 'All' || t.state === this.selectedState || t.isRemote;
+                        const stateMatch = this.selectedState === 'All' || t.state === this.selectedState || (this.selectedState === 'Remote' && t.isRemote);
                         const catMatch = this.selectedCategory === 'All' || t.category === this.selectedCategory;
                         const q = this.searchQuery.trim().toLowerCase();
                         const queryMatch = !q ||
                             t.title.toLowerCase().includes(q) ||
                             t.location.toLowerCase().includes(q) ||
+                            t.state.toLowerCase().includes(q) ||
                             t.category.toLowerCase().includes(q) ||
                             t.description.toLowerCase().includes(q);
                         return stateMatch && catMatch && queryMatch;
@@ -1332,9 +1603,40 @@
                     }, 4000);
                 },
 
+                openAuthModal(nextAction = null) {
+                    this.pendingAction = nextAction;
+                    this.authPreviewModal = true;
+                },
+
+                completeAuthPreview() {
+                    if (!this.authForm.legalName.trim() || !this.authForm.alias.trim()) return;
+                    const cleanAlias = this.authForm.alias.trim().replace(/^@/, '');
+                    this.userProfile.registered = true;
+                    this.userProfile.legalName = this.authForm.legalName.trim();
+                    this.userProfile.alias = cleanAlias;
+                    this.userProfile.emailOrPhone = this.authForm.emailOrPhone.trim();
+                    this.authPreviewModal = false;
+                    this.viewMode = 'app';
+                    this.notify('Signed In Successfully', `Welcome, ${this.userProfile.legalName} (@${this.userProfile.alias})`, '🔐');
+
+                    if (this.pendingAction === 'post') {
+                        this.activeTab = 'post';
+                    } else if (this.pendingAction === 'fund') {
+                        this.fundWalletModalOpen = true;
+                    } else if (this.pendingAction === 'bank') {
+                        this.addBankModalOpen = true;
+                    } else if (this.pendingAction === 'messenger') {
+                        this.messengerView = 'contacts';
+                        this.messengerModalOpen = true;
+                    } else if (this.pendingAction === 'acceptTask' && this.claimingTask) {
+                        this.finalizeTaskAcceptance();
+                    }
+                    this.pendingAction = null;
+                },
+
                 clickPostTask() {
                     if (!this.userProfile.registered) {
-                        this.authPreviewModal = true;
+                        this.openAuthModal('post');
                         return;
                     }
                     this.activeTab = 'post';
@@ -1342,34 +1644,181 @@
 
                 clickClaimDemoTask(task) {
                     this.claimingTask = task;
+                    this.chosenOffer = Math.round((task.minPrice + task.maxPrice) / 2);
                     this.claimModalOpen = true;
                 },
 
-                completeAuthPreview() {
-                    if (!this.authForm.legalName || !this.authForm.alias) return;
-                    this.userProfile.registered = true;
-                    this.userProfile.legalName = this.authForm.legalName;
-                    this.userProfile.alias = this.authForm.alias;
-                    this.authPreviewModal = false;
-                    this.notify('Signed In Successfully', 'Welcome, ' + this.userProfile.legalName + ' (@' + this.userProfile.alias + ')', '🔐');
+                acceptTaskFromModal() {
+                    if (!this.claimingTask) return;
+                    if (!this.userProfile.registered) {
+                        this.claimModalOpen = false;
+                        this.openAuthModal('acceptTask');
+                        return;
+                    }
+                    this.finalizeTaskAcceptance();
+                },
+
+                finalizeTaskAcceptance() {
+                    const task = this.claimingTask;
+                    if (!task) return;
+                    const agreedAmount = Number(this.chosenOffer) || task.minPrice;
+                    this.claimModalOpen = false;
+
+                    // Check if contact thread already exists
+                    let thread = this.chatThreads.find(t => t.partnerAlias === task.posterAlias);
+                    const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    if (!thread) {
+                        thread = {
+                            id: Date.now(),
+                            partnerAlias: task.posterAlias,
+                            partnerAvatar: task.isRemote ? '💻' : (task.campusOnly ? '🎓' : '🛠️'),
+                            partnerRating: task.posterRating || 4.9,
+                            role: task.state + ' • ' + task.location,
+                            online: true,
+                            completed: false,
+                            time: nowStr,
+                            contractAmount: agreedAmount,
+                            lastMsg: `Offer accepted at ${this.formatNaira(agreedAmount)}. Escrow locked.`,
+                            messages: [
+                                { sender: 'me', type: 'text', text: `Hello @${task.posterAlias}, I am ready to handle "${task.title}" for ${this.formatNaira(agreedAmount)}.`, time: nowStr },
+                                { sender: 'them', type: 'text', text: `Awesome! I have locked ${this.formatNaira(agreedAmount)} in Jobter Escrow. Send a photo proof or update here once done so Jobter can release your payment.`, time: nowStr }
+                            ]
+                        };
+                        this.chatThreads.unshift(thread);
+                    } else {
+                        thread.completed = false;
+                        thread.contractAmount = agreedAmount;
+                        thread.lastMsg = `New task offer locked: ${this.formatNaira(agreedAmount)}`;
+                        thread.messages.push({
+                            sender: 'me',
+                            type: 'text',
+                            text: `Accepted "${task.title}" at ${this.formatNaira(agreedAmount)}.`,
+                            time: nowStr
+                        });
+                    }
+
+                    this.escrowReservedBalance += agreedAmount;
+                    this.activeChatId = thread.id;
+                    this.messengerView = 'chat';
+                    this.messengerModalOpen = true;
+                    this.notify('Task Accepted & Escrow Locked', `${this.formatNaira(agreedAmount)} reserved in escrow with @${task.posterAlias}.`, '🤝');
+                },
+
+                openFundWalletModal() {
+                    if (!this.userProfile.registered) {
+                        this.openAuthModal('fund');
+                        return;
+                    }
+                    this.fundWalletModalOpen = true;
+                },
+
+                submitFundWallet() {
+                    const amt = Number(this.fundAmount) || 0;
+                    if (amt < 1000) {
+                        this.notify('Minimum Deposit ₦1,000', 'Please enter at least ₦1,000 to fund your wallet.', '⚠️');
+                        return;
+                    }
+                    this.walletBalance += amt;
+                    this.transactions.unshift({
+                        id: Date.now(),
+                        title: `Wallet Deposit via ${this.fundMethod}`,
+                        amount: amt,
+                        type: 'credit',
+                        icon: '💳',
+                        time: 'Just now'
+                    });
+                    this.fundWalletModalOpen = false;
+                    this.notify('Wallet Funded Successfully', `${this.formatNaira(amt)} credited to your Spendable Wallet.`, '💳');
+                },
+
+                openAddBankModal() {
+                    if (!this.userProfile.registered) {
+                        this.openAuthModal('bank');
+                        return;
+                    }
+                    this.addBankModalOpen = true;
+                },
+
+                handleKycFile(event, fieldName) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        this.userProfile[fieldName] = file.name;
+                    }
                 },
 
                 saveAliasProfile() {
-                    this.notify('Alias Studio & Verification Saved', 'Your public handle @' + this.userProfile.alias + ' and verification credentials are saved.', '✓');
+                    if (!this.userProfile.legalName.trim() || !this.userProfile.alias.trim()) {
+                        this.notify('Missing Details', 'Please enter your legal full name and public alias.', '⚠️');
+                        return;
+                    }
+                    if (this.userProfile.kycTrack === 'general') {
+                        if (!this.userProfile.nin || this.userProfile.nin.trim().length !== 11) {
+                            this.notify('11-Digit NIN Required', 'Please enter a valid 11-digit NIN for General Professional verification.', '⚠️');
+                            return;
+                        }
+                    } else if (this.userProfile.kycTrack === 'student') {
+                        if (!this.userProfile.universityName.trim() || !this.userProfile.matricNumber.trim()) {
+                            this.notify('Student Details Required', 'Please provide your University Name and Matriculation Number.', '⚠️');
+                            return;
+                        }
+                    }
+
+                    this.userProfile.registered = true;
+                    this.userProfile.alias = this.userProfile.alias.trim().replace(/^@/, '');
+                    if (this.userProfile.verificationStatus === 'Not Verified') {
+                        this.userProfile.verificationStatus = 'Pending Review';
+                    }
+                    this.notify('Verification Submitted', `Credentials for @${this.userProfile.alias} submitted. Click "Simulate Admin Approval" to test verified access.`, '🛡️');
+                },
+
+                simulateApproveVerification() {
+                    this.userProfile.verificationStatus = 'Verified';
+                    if (!this.pulseData.badges.some(b => b.title === 'KYC Verified Pro')) {
+                        this.pulseData.badges.push({
+                            id: Date.now(),
+                            icon: '✅',
+                            title: 'KYC Verified Pro',
+                            desc: this.userProfile.kycTrack === 'student' ? 'Verified Campus Student' : 'Verified NIN & Utility Bill'
+                        });
+                    }
+                    this.addXp(100);
+                    this.notify('Identity Verified!', 'Your account is now Verified. You can publish live tasks on Jobter.', '✓');
                 },
 
                 openProfessionalMessenger() {
                     if (!this.userProfile.registered) {
-                        this.authPreviewModal = true;
+                        this.openAuthModal('messenger');
                         return;
                     }
                     this.messengerView = 'contacts';
                     this.messengerModalOpen = true;
                 },
 
+                addXp(amount) {
+                    this.pulseData.xp += amount;
+                    while (this.pulseData.xp >= this.pulseData.nextLevelXp) {
+                        this.pulseData.xp -= this.pulseData.nextLevelXp;
+                        this.pulseData.level += 1;
+                        this.pulseData.nextLevelXp = Math.round(this.pulseData.nextLevelXp * 1.4);
+                        this.notify('Level Up!', `You reached Jobter Pulse™ Level ${this.pulseData.level}!`, '⚡');
+                    }
+                },
+
+                claimChallengeXp() {
+                    if (this.pulseData.weeklyChallenge.claimed) return;
+                    if (this.pulseData.weeklyChallenge.progress < this.pulseData.weeklyChallenge.goal) {
+                        this.notify('Complete 1 Task First', 'Approve and release escrow on any active chat contract to complete this challenge!', '🎯');
+                        return;
+                    }
+                    this.pulseData.weeklyChallenge.claimed = true;
+                    this.addXp(250);
+                    this.notify('Weekly Challenge Claimed!', '+250 XP added to your Jobter Pulse™ level.', '⚡');
+                },
+
                 jobterReleaseEscrow() {
                     if (!this.currentChat || this.currentChat.completed) return;
-                    const payout = Number(this.currentChat.contractAmount);
+                    const payout = Number(this.currentChat.contractAmount) || 0;
                     this.currentChat.completed = true;
                     this.safeLockBalance += payout;
                     this.escrowReservedBalance = Math.max(0, this.escrowReservedBalance - payout);
@@ -1391,17 +1840,34 @@
                         time: 'Just now'
                     });
 
+                    this.pulseData.weeklyChallenge.progress = Math.min(
+                        this.pulseData.weeklyChallenge.goal,
+                        this.pulseData.weeklyChallenge.progress + 1
+                    );
+                    this.addXp(100);
+
                     this.notify('Escrow Released by Jobter!', `${this.formatNaira(payout)} added to SafeLock™ Vault.`, '✓');
 
-                    // First job completion celebration trigger
-                    setTimeout(() => {
-                        this.celebrationModalOpen = true;
-                    }, 800);
+                    if (!this.firstJobCelebrated) {
+                        this.firstJobCelebrated = true;
+                        setTimeout(() => {
+                            this.celebrationModalOpen = true;
+                        }, 600);
+                    }
                 },
 
                 publishTask() {
+                    if (!this.userProfile.registered) {
+                        this.openAuthModal('post');
+                        return;
+                    }
+                    if (this.userProfile.verificationStatus !== 'Verified') {
+                        this.notify('Verification Required', 'Please complete and verify your KYC in Alias Studio before publishing a task.', '🛡️');
+                        this.activeTab = 'profile';
+                        return;
+                    }
                     if (this.postForm.maxPrice < this.postForm.minPrice) {
-                        this.notify('Invalid Budget Range', 'Maximum budget must be >= minimum budget.', '⚠️');
+                        this.notify('Invalid Budget Range', 'Maximum budget must be greater than or equal to minimum budget.', '⚠️');
                         return;
                     }
                     this.tasks.unshift({
@@ -1411,7 +1877,7 @@
                         state: this.postForm.state,
                         location: this.postForm.location,
                         category: this.postForm.category,
-                        posterAlias: this.userProfile.alias,
+                        posterAlias: this.userProfile.alias || 'VerifiedUser',
                         posterRating: 5.0,
                         posterRatingCount: 1,
                         campusOnly: this.postForm.campusOnly,
@@ -1422,23 +1888,28 @@
                         isDemo: false
                     });
                     this.postForm.title = '';
+                    this.postForm.location = '';
                     this.postForm.description = '';
-                    this.notify('Task Published Live!', 'Your task is visible on the marketplace feed.', '🚀');
+                    this.notify('Task Published Live!', 'Your task is now visible on the marketplace feed.', '🚀');
                     this.activeTab = 'explore';
                 },
 
                 submitAddBank() {
                     if (!this.newBank.accountNumber || !this.newBank.accountName) return;
-                    this.linkedBanks.push({ ...this.newBank });
+                    this.linkedBanks.push({
+                        bankName: this.newBank.bankName,
+                        accountNumber: this.newBank.accountNumber.trim(),
+                        accountName: this.newBank.accountName.trim().toUpperCase()
+                    });
                     this.selectedBankIndex = this.linkedBanks.length - 1;
                     this.newBank = { bankName: 'Guaranty Trust Bank (GTBank)', accountNumber: '', accountName: '' };
                     this.addBankModalOpen = false;
-                    this.notify('Bank Linked', 'NIP instant payout destination verified.', '🏦');
+                    this.notify('Bank Account Linked', 'NIP instant payout destination verified and saved.', '🏦');
                 },
 
                 sendChatMessage() {
                     if (!this.newChatMessage.trim() || !this.currentChat) return;
-                    const text = this.newChatMessage;
+                    const text = this.newChatMessage.trim();
                     this.currentChat.messages.push({
                         sender: 'me',
                         type: 'text',
@@ -1479,7 +1950,19 @@
                 },
 
                 withdrawSafeLock() {
-                    if (this.safeLockBalance < this.minWithdrawal) return;
+                    if (this.safeLockBalance < this.minWithdrawal) {
+                        this.notify('Minimum Withdrawal ₦10,000', 'Your SafeLock™ balance must reach at least ₦10,000 to withdraw.', '⚠️');
+                        return;
+                    }
+                    if (!this.userProfile.registered) {
+                        this.openAuthModal('bank');
+                        return;
+                    }
+                    if (this.linkedBanks.length === 0) {
+                        this.notify('Link a Nigerian Bank First', 'Please link your Nigerian bank account to receive your instant NIP payout.', '🏦');
+                        this.addBankModalOpen = true;
+                        return;
+                    }
                     const amount = this.safeLockBalance;
                     const targetBank = this.linkedBanks[this.selectedBankIndex] || this.linkedBanks[0];
                     this.safeLockBalance = 0;
@@ -1491,7 +1974,7 @@
                         icon: '🏦',
                         time: 'Just now'
                     });
-                    this.notify('NIP Payout Dispatched by Jobter!', `${this.formatNaira(amount)} sent to ${targetBank.bankName}.`, '🏦');
+                    this.notify('NIP Payout Dispatched by Jobter!', `${this.formatNaira(amount)} sent to ${targetBank.bankName} (${targetBank.accountNumber}).`, '🏦');
                 }
             }
         }
